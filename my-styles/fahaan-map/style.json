@@ -1,0 +1,14 @@
+{
+ "slug": "fahaan-map",
+ "en": "Fahaan Map",
+ "cn": "Fahaan 地图",
+ "based_on": "map-explainer",
+ "borrows": [
+  "lowpoly-island"
+ ],
+ "size": "1080x1920",
+ "library_version": "f9e2042",
+ "created": "2026-11-22",
+ "line": "Somali explainers over real 3D terrain: a glowing data layer, karaoke captions and the Fahaan end card; no faces, no music.",
+ "line_cn": "索马里语讲解：真实三维地形上的发光数据层、卡拉OK字幕和 Fahaan 片尾；没有人脸，没有音乐。"
+}

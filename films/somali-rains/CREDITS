@@ -1,0 +1,10 @@
+Labada Xilli-roobaad ee Soomaaliya (Fahaan)
+
+Satellite imagery: Sentinel-2 cloudless 2016 by EOX IT Services GmbH (contains modified Copernicus Sentinel data 2016), CC BY 4.0 — https://s2maps.eu (tiles.maps.eox.at, layer s2cloudless_3857). Credited on screen.
+Elevation and bathymetry: AWS Terrain Tiles (Mapzen/Tilezen terrarium; SRTM, GMTED, ETOPO1, GEBCO and others), free with attribution — https://registry.opendata.aws/terrain-tiles/. Credited on screen. Vertical exaggeration ×12 (stated on screen).
+Every downloaded tile URL is logged in raw/manifest.jsonl.
+Voice: Microsoft Azure AI Speech, neural voice so-SO-MuuseNeural, generated with the channel owner's own Azure Speech resource (UK South), under Microsoft's terms.
+Font: Montserrat (The Montserrat Project Authors), SIL Open Font License 1.1 — fonts/Montserrat-OFL.txt.
+Sound effects: synthesised in code (filtered noise), no third-party samples. No music.
+Fahaan icon: designed in code for the channel (icon.js; brand/fahaan-icon-*.png).
+Code: rendering and post-processing adapted from Lemo-Opuscar (core/, styles/map-explainer/demo/post.js), MIT licence.

@@ -1,0 +1,45 @@
+[
+ {
+  "id": "s01",
+  "text": "Soomaaliya qorrax badan bay leedahay… haddaba waayo Soomaalida qurbaha ku nool u yeeshaan yaraanta Fiitamiin D?",
+  "say": "Soomaaliya qorrax badan bay leedahay. Haddaba waayo Soomaalida qurbaha ku nool u yeeshaan yaraanta Fiitamiin Dii?"
+ },
+ {
+  "id": "s02",
+  "text": "Marka qorraxdu maqaarka ku dhacdo, jirku wuxuu sameeyaa Fiitamiin D. Fiitamiin D wuxuu xoojiyaa lafaha iyo murqaha.",
+  "say": "Marka qorraxdu maqaarka ku dhacdo, jirku wuxuu sameeyaa Fiitamiin Dii. Fiitamiin Dii wuxuu xoojiyaa lafaha iyo murqaha."
+ },
+ {
+  "id": "s03",
+  "text": "Maqaarka madow wuxuu u baahan yahay qorrax ka badan si uu u sameeyo isla qaddarka Fiitamiin D.",
+  "say": "Maqaarka madow wuxuu u baahan yahay qorrax ka badan si uu u sameeyo isla qaddarka Fiitamiin Dii."
+ },
+ {
+  "id": "s04",
+  "text": "Dalal sida UK, Norway iyo Canada, oo Soomaali badani ku nool yihiin, qorraxdu way daciif tahay, gaar ahaan xilliga qabowga.",
+  "say": "Dalal sida Yuu-Kee, Noorweey iyo Kanada, oo Soomaali badani ku nool yihiin, qorraxdu way daciif tahay, gaar ahaan xilliga qabowga."
+ },
+ {
+  "id": "s05",
+  "text": "Dharka jirka qariya iyo inaan gudaha joogno waxay sii yareeyaan qorraxda maqaarkeenna gaarta."
+ },
+ {
+  "id": "s06",
+  "text": "Yaraanta Fiitamiin D waxay keeni kartaa daal, xanuun lafaha iyo murqaha ah, carruurtana lafo jilicsan.",
+  "say": "Yaraanta Fiitamiin Dii waxay keeni kartaa daal, xanuun lafaha iyo murqaha ah, carruurtana lafo jilicsan."
+ },
+ {
+  "id": "s07",
+  "text": "Waydii dhakhtarkaaga baaritaanka dhiigga iyo kiniinnada Fiitamiin D, gaar ahaan xilliga qabowga.",
+  "say": "Waydii dhakhtarkaaga baaritaanka dhiigga iyo kiniinnada Fiitamiin Dii, gaar ahaan xilliga qabowga."
+ },
+ {
+  "id": "s08",
+  "text": "Talo caafimaad maaha, la tasho dhakhtarkaaga. Maxaad rabtaa inaan sharaxo marka xigta?"
+ },
+ {
+  "id": "s09",
+  "text": "Like noo dhiib oo subscribe si aad wax badan u barato!",
+  "say": "Layk noo dhiib oo sabskraayb si aad wax badan u barato!"
+ }
+]

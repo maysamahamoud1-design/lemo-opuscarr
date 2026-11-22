@@ -1,0 +1,85 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Fahaan banner</title>
+<style>@font-face{font-family:'Montserrat';src:url('../../fonts/Montserrat.ttf') format('truetype');font-weight:100 900;}
+html,body{margin:0;background:#2a7fc8;overflow:hidden}canvas{display:block}</style></head><body><canvas id="c"></canvas>
+<script type="module">
+// Fahaan YouTube banner, 2560×1440. Everything that must be read sits in the centre 1546×423 (YouTube's safe area on every device).
+// ?guide=1 draws the safe areas for checking.
+import { drawIcon } from '../../icon.js';
+const W = 2560, H = 1440, cv = document.getElementById('c'); cv.width = W; cv.height = H; const g = cv.getContext('2d');
+await document.fonts.load('800 100px Montserrat'); await document.fonts.load('600 100px Montserrat');
+const Q = new URLSearchParams(location.search);
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+
+function hex(x, y, R, h, a) {  // isometric hex block, same faces and colours as the icon
+  const sq = .52, p = [0, 1, 2, 3, 4, 5].map(i => { const t = Math.PI / 3 * i; return [x + Math.cos(t) * R, y + Math.sin(t) * R * sq]; });
+  g.globalAlpha = a;
+  const side = (i, j, c) => { g.fillStyle = c; g.beginPath(); g.moveTo(...p[i]); g.lineTo(p[i][0], p[i][1] + h); g.lineTo(p[j][0], p[j][1] + h); g.lineTo(...p[j]); g.closePath(); g.fill(); };
+  side(0, 1, '#1d6f86'); side(1, 2, '#2a86a0'); side(2, 3, '#3b9cb5');
+  g.fillStyle = '#9ff0d2'; g.beginPath(); p.forEach((q, i) => i ? g.lineTo(...q) : g.moveTo(...q)); g.closePath(); g.fill();
+  g.fillStyle = 'rgba(255,255,255,.35)'; g.beginPath(); g.moveTo(x, y); g.lineTo(...p[3]); g.lineTo(...p[4]); g.lineTo(...p[5]); g.closePath(); g.fill();
+  g.globalAlpha = 1;
+}
+function spark(x, y, k, a) {
+  g.globalAlpha = a; g.fillStyle = '#ffd45c'; g.beginPath();
+  for (let i = 0; i < 8; i++) { const t = i / 8 * Math.PI * 2 - Math.PI / 2, r = i % 2 ? k * .28 : k; const px = x + Math.cos(t) * r, py = y + Math.sin(t) * r; i ? g.lineTo(px, py) : g.moveTo(px, py); }
+  g.closePath(); g.fill(); g.globalAlpha = 1;
+}
+
+window.DUR = 1;
+window.render = () => {
+  seed = 7;
+  // ground: the icon's gradient, with its two faceted light planes
+  const bg = g.createLinearGradient(0, 0, W, H); bg.addColorStop(0, '#4a9be8'); bg.addColorStop(1, '#25b5a5'); g.fillStyle = bg; g.fillRect(0, 0, W, H);
+  g.fillStyle = 'rgba(255,255,255,.08)'; g.beginPath(); g.moveTo(0, 0); g.lineTo(W * .62, 0); g.lineTo(0, H * .9); g.closePath(); g.fill();
+  g.fillStyle = 'rgba(10,40,80,.08)'; g.beginPath(); g.moveTo(W, H * .25); g.lineTo(W, H); g.lineTo(W * .45, H); g.closePath(); g.fill();
+
+  // a loose isometric field of hex blocks, quieter in the middle where the text sits
+  const R = 70, dx = R * 1.5, dy = R * .52 * Math.sqrt(3) * 1.0;
+  const blocks = [];
+  for (let r = -2; r < H / dy + 3; r++) for (let c = -2; c < W / dx + 3; c++) {
+    const x = c * dx, y = r * dy * 2 + (c % 2 ? dy : 0);
+    const mx = Math.abs(x - W / 2) / 900, my = Math.abs(y - H / 2) / 260;
+    const quiet = (Math.abs(x - W / 2) < 880 && Math.abs(y - H / 2) < 260) ? 1 : Math.max(0, 1 - Math.max(mx, my) * .8); // 1 behind the text
+    if (rnd() > .42 + .1 * (1 - quiet)) continue;
+    blocks.push([x, y, R * (.96), 18 + rnd() * 52, (.10 + .22 * rnd()) * (1 - .92 * quiet)]);
+  }
+  blocks.sort((a, b) => a[1] - b[1]).forEach(b => hex(...b));
+
+  // soft panel behind the text block so it reads on any device
+  const px = 600, py = 560, pw = 1360, ph = 320;
+  const vg = g.createRadialGradient(W / 2, H / 2, 80, W / 2, H / 2, 900); vg.addColorStop(0, 'rgba(20,70,120,.30)'); vg.addColorStop(1, 'rgba(20,70,120,0)');
+  g.fillStyle = vg; g.fillRect(0, 0, W, H);
+
+  // sparks scattered outside the text
+  [[430, 420, 30], [2160, 470, 38], [2240, 1010, 24], [360, 1040, 22], [1990, 300, 18], [640, 230, 16], [1250, 1150, 20], [2420, 760, 16]].forEach(([x, y, k]) => spark(x, y, k, .9));
+
+  // the icon and the words, centred as one group inside the 1546-wide safe area
+  const iS = 300, gap = 64;
+  g.font = '800 48px Montserrat'; const w1 = g.measureText('Big ideas, explained simply.').width, w2 = g.measureText('Fikrado waaweyn, si fudud loo sharxay.').width;
+  g.font = '800 150px Montserrat'; if (g.letterSpacing !== undefined) g.letterSpacing = '14px'; const w0 = g.measureText('FAHAAN').width; if (g.letterSpacing !== undefined) g.letterSpacing = '0px';
+  const tw = Math.max(w0, w1, w2), gx = (W - (iS + gap + tw)) / 2;
+  drawIcon(g, gx + iS / 2, H / 2, iS, { shadow: true });
+  const tx = gx + iS + gap;
+  g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+  g.shadowColor = 'rgba(10,40,80,.35)'; g.shadowBlur = 18; g.shadowOffsetY = 6;
+  g.fillStyle = '#ffffff'; g.font = '800 150px Montserrat';
+  if (g.letterSpacing !== undefined) g.letterSpacing = '14px';
+  g.fillText('FAHAAN', tx - 4, H / 2 - 22);
+  if (g.letterSpacing !== undefined) g.letterSpacing = '0px';
+  g.font = '800 48px Montserrat'; g.fillStyle = '#ffffff';
+  g.fillText('Big ideas, explained simply.', tx, H / 2 + 52);
+  g.fillStyle = '#ffd45c';
+  g.fillText('Fikrado waaweyn, si fudud loo sharxay.', tx, H / 2 + 122);
+  window.GROUP = [gx, tx + tw];
+  g.shadowColor = 'transparent';
+
+  if (Q.get('guide')) {
+    g.lineWidth = 4; g.setLineDash([18, 12]);
+    g.strokeStyle = '#ff3b3b'; g.strokeRect((W - 1546) / 2, (H - 423) / 2, 1546, 423);   // all devices
+    g.strokeStyle = '#ffffff'; g.strokeRect(0, (H - 423) / 2, W, 423);                 // desktop max
+    g.setLineDash([]);
+  }
+};
+window.READY = true;
+</script></body></html>
