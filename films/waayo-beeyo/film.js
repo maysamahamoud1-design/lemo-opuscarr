@@ -51,7 +51,7 @@
       ctx.restore();
     });
   };
-  const cliff = (ctx) => clipStage(ctx, () => { poly(ctx, [[CX - 120, 1120], [CX - 60, 1010], [CX + 60, 975], [CX + 400, 960], [CX + 400, 1120]], mix(TER, DBR, 0.25)); poly(ctx, [[CX - 60, 1010], [CX + 60, 975], [CX + 400, 960], [CX + 400, 1000], [CX + 80, 1015]], TER); });
+  const cliff = (ctx) => clipStage(ctx, () => { ctx.beginPath(); ctx.rect(0, 0, W, 1040); ctx.clip(); ctx.translate(0, -80); poly(ctx, [[CX - 120, 1120], [CX - 60, 1010], [CX + 60, 975], [CX + 400, 960], [CX + 400, 1120]], mix(TER, DBR, 0.25)); poly(ctx, [[CX - 60, 1010], [CX + 60, 975], [CX + 400, 960], [CX + 400, 1000], [CX + 80, 1015]], TER); });
   const coin = (ctx, x, y, r, glint) => {
     disc(ctx, x, y, r, PAL.amber.t[2]); G.ring(ctx, x, y, r * 0.74, r * 0.1, PAL.amber.t[0]); disc(ctx, x, y, r * 0.42, PAL.amber.t[3]);
     if (glint > 0) { ctx.save(); ctx.globalAlpha = glint; ctx.fillStyle = '#ffffff'; ctx.translate(x + r * 0.45, y - r * 0.45); ctx.beginPath();
@@ -66,7 +66,7 @@
   const opening = (ctx, lt) => {
     cliff(ctx);
     wind(ctx, lt);
-    tree(ctx, CX + 150, 985, 470, { sway: Math.sin(lt * 2.2) * 10 });
+    tree(ctx, CX + 150, 905, 450, { sway: Math.sin(lt * 2.2) * 10 });
     coin(ctx, 330, 700, 115, 0.5 + 0.5 * Math.sin(lt * 4));
   };
 
@@ -92,7 +92,7 @@
   }, 'WAAYO?', [[0, 'pop']]);
 
   // ——— 2 · what it is: cut the bark lightly, sap seeps out and hardens: that is frankincense ———
-  card(S('s02').t, 's02', (ctx, lt) => { cliff(ctx); tree(ctx, CX + 140, 990, 540, { sway: Math.sin(lt * 2) * 6 }); pill(ctx, 'GEEDKA BEEYADA', CX - 200, 1050, DBR, CREAM, E.oBack(inv(0.1, 0.4, lt)), 30); },
+  card(S('s02').t, 's02', (ctx, lt) => { cliff(ctx); tree(ctx, CX + 140, 910, 420, { sway: Math.sin(lt * 2) * 6 }); },
     'GEEDKA BEEYADA', [[0.1, 'pop']]);
   card(wt('s02', 'jirridda') - 0.1, 's02', (ctx, lt) => {
     const b0 = sinceW('s02', 'jirridda') - 0.1, tj = sinceW('s02', 'jaro,') - b0 - 0.2, td = sinceW('s02', 'dheecaan') - b0, te = sinceW('s02', 'engega.') - b0;
@@ -202,14 +202,14 @@
 
   // ——— 7 · the warning: over-cut trees can need 10 years or more to recover ———
   card(S('s07').t, 's07', (ctx, lt) => {
-    cliff(ctx); tree(ctx, CX + 140, 990, 540, { sway: Math.sin(lt * 2) * 6 });
+    cliff(ctx); tree(ctx, CX + 140, 910, 420, { sway: Math.sin(lt * 2) * 6 });
     const tk = sinceW('s07', 'khatar') - 0.1, k = E.oBack(inv(tk, tk + 0.3, lt));
     if (k > 0) { ctx.save(); ctx.translate(CX - 260, 560); ctx.scale(k, k); ctx.lineJoin = 'round'; ctx.fillStyle = TER; ctx.strokeStyle = TER; ctx.lineWidth = 30; ctx.beginPath(); ctx.moveTo(0, -110); ctx.lineTo(110, 80); ctx.lineTo(-110, 80); ctx.closePath(); ctx.fill(); ctx.stroke();
       ctx.fillStyle = CREAM; ctx.font = '900 140px Montserrat'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('!', 0, 16); ctx.restore(); }
   }, 'KHATAR', [[sinceW('s07', 'khatar') - 0.1, 'pop']]);
   card(wt('s07', 'haddii') - 0.1, 's07', (ctx, lt) => {
     const cuts = Math.min(12, Math.floor(lt * 9)), dr = E.io(inv(0.9, 2.2, lt));
-    cliff(ctx); tree(ctx, CX + 140, 990, 540, { cuts, droop: dr, fade: dr * 0.8 });
+    cliff(ctx); tree(ctx, CX + 140, 910, 420, { cuts, droop: dr, fade: dr * 0.8 });
   }, 'XAD-DHAAF', [[0.1, 'scrape', { dur: 0.4 }], [0.5, 'scrape', { dur: 0.4, gain: 0.8 }], [0.9, 'scrape', { dur: 0.4, gain: 0.7 }], [1.0, 'wind', { dur: 1.8, gain: 0.5 }]]);
   card(wt('s07', 'toban') - 0.1, 's07', (ctx, lt) => {
     const yr = Math.min(10, Math.floor(lt * 7) + 1);
