@@ -1,0 +1,23 @@
+# Builds film.js from the series engine (the vitamin D film's film.js) and this film's cards.js, with the loop changes.
+import re, sys, os
+H = os.path.dirname(os.path.abspath(__file__)) + '/..'
+src = open(sys.argv[1]).read(); cards = open(f'{H}/cards.js').read()
+a = src.index('  // ——— 1 · hook'); b = src.index('  // the bouncing arrow lives outside the card')
+s = src[:a] + cards + src[b:]
+def rep(x, y):
+    global s
+    assert x in s, x[:60]; s = s.replace(x, y)
+s = re.sub(r"const HUE = \{[^}]*\};", "const HUE = { s01: 'brown', s02: 'cream', s03: 'green', s04: 'red', s05: 'red', s06: 'brown', s07: 'red', s08: 'green', s09: 'brown' };", s)
+rep("const KICK = 'SOOMAALIDA QURBAHA · FIITAMIIN D';", "const KICK = 'SHAAH · SONKOR';")
+rep("'WAAYO? · FIITAMIIN D'", "'WAAYO? · SHAAH'")
+rep("const SUN = PAL.sun.t[2], SUNL = PAL.sun.t[3];", "const SUN = PAL.sun.t[2], SUNL = '#f2b25c';")
+rep("if (c.sc === 's01') G.maskText(ctx, KICK", "if (c.sc === 's01' || c.loop) G.maskText(ctx, KICK")
+# loop: the HUD and captions fade in at the start and out at the end, so the last frame is the first
+rep("    hud(ctx, t, sc, P);\n    const cap = captions(ctx, t, P, sc);",
+    "    const edge = Math.min(inv(0, 0.2, t), 1 - inv(DUR - 0.55, DUR - 0.15, t));\n    ctx.save(); ctx.globalAlpha = edge; hud(ctx, t, sc, P);\n    const cap = captions(ctx, t, P, sc); ctx.restore();")
+rep("if (sc.id === 's08' && t > wt('s08', 'maxaad') + 0.6) {", "if (false) {")
+rep("inv(-0.2, 0.15, t), { align: 'center', ls: '3px' }", "1, { align: 'center', ls: '3px' }")
+rep("if (c.t0 === 0) since = -0.2;", "if (c.t0 === 0) since = -1;")
+rep("const rowDrift = (t) => (j) => (j % 2 ? 1 : -1) * t * 14;", "const rowDrift = (t) => (j) => (j % 2 ? 1 : -1) * 90 * Math.sin(2 * Math.PI * t / DUR);")
+rep('// Waayo? · Fiitamiin D: the film', '// Waayo? · Shaah: the film (it loops: the last frame is the first)')
+open(f'{H}/film.js', 'w').write(s); print('film.js', len(s))
