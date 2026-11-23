@@ -4,73 +4,73 @@ window.SC = [
 "id": "s01",
 "t": 0,
 "v": 0.1,
-"vd": 6.593,
+"vd": 5.736,
 "text": "Soomaaliya qorrax badan bay leedahay… haddaba waayo Soomaalida qurbaha ku nool u yeeshaan yaraanta Fiitamiin D?",
-"end": 6.893
+"end": 5.956
 },
 {
 "id": "s02",
-"t": 6.893,
-"v": 6.993,
-"vd": 7.069,
+"t": 5.956,
+"v": 6.056,
+"vd": 6.159,
 "text": "Marka qorraxdu maqaarka ku dhacdo, jirku wuxuu sameeyaa Fiitamiin D. Fiitamiin D wuxuu xoojiyaa lafaha iyo murqaha.",
-"end": 14.262
+"end": 12.335
 },
 {
 "id": "s03",
-"t": 14.262,
-"v": 14.362,
-"vd": 5.005,
+"t": 12.335,
+"v": 12.435,
+"vd": 4.356,
 "text": "Maqaarka madow wuxuu u baahan yahay qorrax ka badan si uu u sameeyo isla qaddarka Fiitamiin D.",
-"end": 19.567
+"end": 16.911
 },
 {
 "id": "s04",
-"t": 19.567,
-"v": 19.667,
-"vd": 6.952,
+"t": 16.911,
+"v": 17.011,
+"vd": 6.063,
 "text": "Dalal sida UK, Norway iyo Canada, oo Soomaali badani ku nool yihiin, qorraxdu way daciif tahay, gaar ahaan xilliga qabowga.",
-"end": 26.819
+"end": 23.194
 },
 {
 "id": "s05",
-"t": 26.819,
-"v": 26.919,
-"vd": 4.736,
+"t": 23.194,
+"v": 23.294,
+"vd": 4.13,
 "text": "Dharka jirka qariya iyo inaan gudaha joogno waxay sii yareeyaan qorraxda maqaarkeenna gaarta.",
-"end": 31.855
+"end": 27.544
 },
 {
 "id": "s06",
-"t": 31.855,
-"v": 31.955,
-"vd": 5.484,
+"t": 27.544,
+"v": 27.644,
+"vd": 4.785,
 "text": "Yaraanta Fiitamiin D waxay keeni kartaa daal, xanuun lafaha iyo murqaha ah, carruurtana lafo jilicsan.",
-"end": 37.639
+"end": 32.549
 },
 {
 "id": "s07",
-"t": 37.639,
-"v": 37.739,
-"vd": 5.046,
+"t": 32.549,
+"v": 32.649,
+"vd": 4.401,
 "text": "Waydii dhakhtarkaaga baaritaanka dhiigga iyo kiniinnada Fiitamiin D, gaar ahaan xilliga qabowga.",
-"end": 42.985
+"end": 37.17
 },
 {
 "id": "s08",
-"t": 42.985,
-"v": 43.085,
-"vd": 5.152,
+"t": 37.17,
+"v": 37.27,
+"vd": 4.485,
 "text": "Talo caafimaad maaha, la tasho dhakhtarkaaga. Maxaad rabtaa inaan sharaxo marka xigta?",
-"end": 48.437
+"end": 41.875
 },
 {
 "id": "s09",
-"t": 48.437,
-"v": 48.537,
-"vd": 2.886,
+"t": 41.875,
+"v": 41.975,
+"vd": 2.521,
 "text": "Like noo dhiib oo subscribe si aad wax badan u barato!",
-"end": 53.023
+"end": 46.696
 }
 ];
-window.DUR = 53.023;
+window.DUR = 46.696;

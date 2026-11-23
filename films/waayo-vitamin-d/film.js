@@ -1,4 +1,4 @@
-// Waayo? · Fiitamiin D: the film on one timeline. Scene times come from timeline.js (voice lengths), card changes from the
+// Waayo? · Fiitamiin D: the film (it loops: the last frame is the first) on one timeline. Scene times come from timeline.js (voice lengths), card changes from the
 // spoken words (voices/words.js). render(t) draws film second t; EV lists the sound events; TEXTS(t) reports visible text.
 (function () {
   const { W, H, PAL, E, clamp, lerp, inv, disc, seg, rrect, poly, ring, mix, rgba } = G;
@@ -20,9 +20,12 @@
   const C = [];
   const card = (t0, sc, draw, title, ev = []) => C.push({ t0, sc, draw, title, ev });
 
+  // ═════════ the vitamin D story's cards (spliced into film.js by tools/splice.py) ═════════
+  const split2 = (tw, t0, sc, D, T, ev = []) => { card(t0, sc, D, T, ev); const off = tw - 0.1 - t0;
+    card(t0 + off, sc, (ctx, lt, P, t) => D(ctx, lt + off, P, t), typeof T === 'function' ? (lt) => T(lt + off) : T, []); };
   // ——— 1 · hook: plenty of sun over Somalia… so why? ———
   const somProj = (cx, cy, s) => ([lon, lat]) => [cx + (lon - 46) * s, cy - (lat - 6) * s];
-  card(0, 's01', (ctx, lt, P) => {
+  const opening = (ctx, lt, P) => {
     const rise = E.oBack(inv(0, 0.7, lt), 1.2), pulse = E.oExp(inv(wt('s01', 'haddaba') - S('s01').v, wt('s01', 'haddaba') - S('s01').v + 0.5, lt));
     G.sun(ctx, 760, lerp(700, 500, rise), 105 + 22 * pulse, SUN, lt * 0.35, 1 + 0.5 * pulse);
     G.geo(ctx, window.SOM, somProj(470, 840, 27), PAL.sun.t[0]);
@@ -30,7 +33,8 @@
       const a = [690 + (i - 2) * 40, lerp(700, 500, rise) + 150], b = [520 + (i - 2) * 70, 820 + (i - 2) * 20];
       G.ray(ctx, a, b, E.oExp(inv(0.4 + i * 0.06, 1.0 + i * 0.06, lt)) * (0.8 + 0.2 * pulse), 16, rgba(SUN, 0.9));
     }
-  }, 'WAAYO?', [[0.25, 'pop'], [1.8, 'sparkle']]);
+  };
+  card(0, 's01', opening, 'WAAYO?', [[0.25, 'pop'], [1.8, 'sparkle']]);
   card(wt('s01', 'qurbaha') - 0.15, 's01', (ctx, lt, P) => {
     // Somalia small at the bottom left, a plane arcs to three figures under a pale, small sun
     G.geo(ctx, window.SOM, somProj(300, 1030, 15), PAL.sun.t[0]);
@@ -104,7 +108,7 @@
 
   // ——— 3 · darker skin needs more sun for the same amount ———
   const s3 = S('s03');
-  card(s3.t, 's03', (ctx, lt, P) => {
+  split2(wt('s03', 'isla'), s3.t, 's03', (ctx, lt, P) => {
     const tq = wt('s03', 'qorrax') - s3.t, ti = wt('s03', 'isla') - s3.t;
     G.sun(ctx, CX, 450, 70, SUN, lt * 0.4);
     const pL = E.io(inv(0.4, tq + 0.3, lt)), pD = E.io(inv(0.4, ti + 0.4, lt));
@@ -164,11 +168,11 @@
       G.snow(ctx, x, y, 14 + 10 * G.hash(i + 9), '#ffffff');
     }
     G.meter(ctx, 900, 1060, 70, 200, lerp(0.55, 0.32, E.io3(inv(0.4, 1.0, lt))), CREAM, SUN, INK);
-  }, 'XILLIGA QABOWGA', [[0, 'swipe'], [0.5, 'click']]);
+  }, 'QORRAX DACIIF', [[0, 'swipe'], [0.5, 'click']]);
 
   // ——— 5 · covering clothes and staying indoors cut it further ———
   const s5 = S('s05');
-  card(s5.t, 's05', (ctx, lt, P) => {
+  split2(wt('s05', 'gudaha'), s5.t, 's05', (ctx, lt, P) => {
     const tg = wt('s05', 'gudaha') - s5.t, ty = wt('s05', 'yareeyaan') - s5.t;
     const drop = E.oBack(inv(tg, tg + 0.45, lt), 1.1);
     G.sun(ctx, 300, 470, 60, mix(SUN, '#c8ccd4', 0.5), lt * 0.3, 0.6);
@@ -264,6 +268,9 @@
       if (done) { const q = E.oBack(inv(ts + 0.6, ts + 0.9, lt)); disc(ctx, CX + 330, 830, 44 * q, PAL.green.t[2]); G.tick(ctx, CX + 330, 830, 52 * q, CREAM, E.oExp(inv(ts + 0.7, ts + 1.0, lt))); }
     }
   }, 'LIKE & SUBSCRIBE', [[0, 'swipe'], [wt('s09', 'like') - S('s09').t, 'pop'], [wt('s09', 'subscribe') - S('s09').t, 'pop'], [wt('s09', 'subscribe') - S('s09').t + 0.5, 'click'], [wt('s09', 'subscribe') - S('s09').t + 0.65, 'sparkle', { dur: 0.7 }]]);
+  // ——— the loop: back to the opening shot, which resets to frame 0 in the last half second ———
+  card(S('s09').v + S('s09').vd + 0.9, 's09', (ctx, lt, P, t) => opening(ctx, t > DUR - 0.5 ? 0 : lt, P), 'WAAYO?', [[0.25, 'pop']]);
+  C[C.length - 1].loop = true;
   // the bouncing arrow lives outside the card (it points down at the comments, under the captions)
 
   C.forEach((c, i) => (c.t1 = i + 1 < C.length ? C[i + 1].t0 : DUR));
@@ -272,7 +279,7 @@
   const layerA = G.canvas(), layerB = G.canvas();
   const bgPat = (key) => G.pattern(key, 11, { spread: 0.13, density: 0.38, set: 'sun', base: PAL[key].bg });
   const fullPat = (key) => G.pattern(key, 23, { spread: 1, density: 0.55, set: 'sun' });
-  const rowDrift = (t) => (j) => (j % 2 ? 1 : -1) * t * 14;
+  const rowDrift = (t) => (j) => (j % 2 ? 1 : -1) * 90 * Math.sin(2 * Math.PI * t / DUR);
 
   function background(ctx, key, t) {
     ctx.fillStyle = PAL[key].bg; ctx.fillRect(0, 0, W, H);
@@ -292,11 +299,11 @@
     const s = titleOf(c, t); if (!s) return;
     // the mask slide restarts whenever the title text changes
     let since = c.t0; for (let u = c.t0; u < t; u += 0.05) if (titleOf(c, u) !== titleOf(c, u - 0.05)) since = u;
-    if (c.t0 === 0) since = -0.2;
+    if (c.t0 === 0) since = -1;
     ctx.save(); ctx.font = '900 140px Montserrat'; ctx.letterSpacing = '-2px';
     const px = Math.min(140, Math.floor(140 * 960 / ctx.measureText(s).width)); ctx.restore();
     G.maskText(ctx, s, CX, TY, `900 ${px}px Montserrat`, INK, inv(since, since + 0.35, t), { align: 'center', ls: '-2px' });
-    if (c.sc === 's01') G.maskText(ctx, KICK, CX, TY - 138, '800 40px Montserrat', PAL.sun.t[0], inv(-0.2, 0.15, t), { align: 'center', ls: '3px' });
+    if (c.sc === 's01' || c.loop) G.maskText(ctx, KICK, CX, TY - 138, '800 40px Montserrat', PAL.sun.t[0], 1, { align: 'center', ls: '3px' });
   }
   const KICK = 'SOOMAALIDA QURBAHA · FIITAMIIN D';
   function hud(ctx, t, sc, P) {
@@ -384,8 +391,9 @@
       }
     } else { drawCard(layerB.getContext('2d'), c, t); ctx.drawImage(layerB, 0, 0); }
     title(ctx, c, t, P);
-    hud(ctx, t, sc, P);
-    const cap = captions(ctx, t, P, sc);
+    const edge = Math.min(inv(0, 0.2, t), 1 - inv(DUR - 0.55, DUR - 0.15, t));
+    ctx.save(); ctx.globalAlpha = edge; hud(ctx, t, sc, P);
+    const cap = captions(ctx, t, P, sc); ctx.restore();
     if (sc.id === 's08' && t > wt('s08', 'maxaad') + 0.6) {   // the arrow points down to the comments
       const k = E.oBack(inv(wt('s08', 'maxaad') + 0.6, wt('s08', 'maxaad') + 0.9, t));
       G.arrowDown(ctx, CX, cap.y1 + 66 + Math.abs(Math.sin((t - s8.t) * 4)) * 14, 44 * k, INK);
@@ -407,6 +415,7 @@
   for (const s of SC) EV.push({ t: s.v, type: 'voice', id: s.id });
   for (const w of WIPES) EV.push({ t: +(w.t - WIN).toFixed(3), type: 'whoosh', dur: 0.6 });
   C.forEach((c) => c.ev.forEach(([dt, type, o]) => EV.push({ t: +(c.t0 + dt).toFixed(3), type, ...(o || {}) })));
+  C.forEach((c, i) => { if (i && !WIPES.some((w) => Math.abs(w.t - c.t0) < 0.01)) EV.push({ t: +(c.t0 - 0.04).toFixed(3), type: 'whoosh', dur: 0.45, gain: 0.55 }); });
   EV.sort((a, b) => a.t - b.t);
 
   const cv = document.getElementById('c'), ctx = cv.getContext('2d');

@@ -2,6 +2,8 @@
 
 "Waayo?" series (Fahaan channel) · Somali YouTube Short · 1080×1920, 24 fps, about 51 s. Voice: Azure `so-SO-MuuseNeural` (the user's key, rate +6 %). Somali voice and karaoke captions only. No music or instruments; non-instrument effects only (whoosh, pop, soft click, light wind, sparkle). Faceless figures. No logo, no intro card; the hook question is on screen from frame 0. Style: Pictogram Motion (`pictogram-motion`).
 
+**Redone to the owner's favourite standard (the Shaah film):** 46.7 s; Muuse at +22 % with 0.22 s gaps (all nine lines re-voiced); scenes 3 and 5 split into two cards; a whoosh on every card change; a looping ending (after like-and-subscribe, the opening Somalia-and-sun shot returns and resets to frame 0). The series engine this film's first version was built in is kept as `engine-film.js`; the other Waayo films build from it.
+
 The script and the scene order are the user's. What I direct: the pictograms, the cards inside each scene, the colour per chapter and the timing.
 
 ## 1. Three candidate structures
