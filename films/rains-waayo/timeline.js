@@ -4,105 +4,105 @@ window.SC = [
 "id": "s01",
 "t": 0,
 "v": 0.1,
-"vd": 3.964,
+"vd": 3.401,
 "text": "Soomaaliya laba xilli-roobaad bay leedahay. Waa maxay sababtu?",
-"end": 4.264
+"end": 3.621
 },
 {
 "id": "s02",
-"t": 4.264,
-"v": 4.364,
-"vd": 5.883,
+"t": 3.621,
+"v": 3.721,
+"vd": 5.03,
 "text": "Gu': Abriil–Juun. Deyr: Oktoobar–Diseembar.",
-"end": 10.447
+"end": 8.871
 },
 {
 "id": "s03",
-"t": 10.447,
-"v": 10.547,
-"vd": 4.853,
+"t": 8.871,
+"v": 8.971,
+"vd": 4.155,
 "text": "Sababtu waa ITCZ: suunka ay dabayluhu isugu yimaadaan.",
-"end": 15.6
+"end": 13.246
 },
 {
 "id": "s04",
-"t": 15.6,
-"v": 15.7,
-"vd": 3.846,
+"t": 13.246,
+"v": 13.346,
+"vd": 3.295,
 "text": "Dabaylaha woqooyi iyo koonfur waxay ku kulmaan meel u dhow dhulbaraha.",
-"end": 19.746
+"end": 16.761
 },
 {
 "id": "s05",
-"t": 19.746,
-"v": 19.846,
-"vd": 4.22,
+"t": 16.761,
+"v": 16.861,
+"vd": 3.614,
 "text": "Hawo kulul oo qoyan ayaa kor u kacda, way qabowdaa, roobna way noqotaa.",
-"end": 24.266
+"end": 20.595
 },
 {
 "id": "s06",
-"t": 24.266,
-"v": 24.366,
-"vd": 5.223,
+"t": 20.595,
+"v": 20.695,
+"vd": 4.467,
 "text": "ITCZ-du waxay raacdaa qorraxda: woqooyi Luulyo, koonfur Janaayo.",
-"end": 29.789
+"end": 25.282
 },
 {
 "id": "s07",
-"t": 29.789,
-"v": 29.889,
-"vd": 3.123,
+"t": 25.282,
+"v": 25.382,
+"vd": 2.675,
 "text": "Gu'ga, waxay Soomaaliya dul martaa iyadoo woqooyi u socota.",
-"end": 33.212
+"end": 28.177
 },
 {
 "id": "s08",
-"t": 33.212,
-"v": 33.312,
-"vd": 2.913,
+"t": 28.177,
+"v": 28.277,
+"vd": 2.498,
 "text": "Deyrta, way soo noqotaa oo mar labaad ayay dul martaa.",
-"end": 36.425
+"end": 30.895
 },
 {
 "id": "s09",
-"t": 36.425,
-"v": 36.525,
-"vd": 4.567,
+"t": 30.895,
+"v": 30.995,
+"vd": 3.913,
 "text": "Xagaaga, dabaylaha monsoon-ka (dabaylo xilliyeed) xeebta ayay barbar maraan.",
-"end": 41.292
+"end": 35.028
 },
 {
 "id": "s10",
-"t": 41.292,
-"v": 41.392,
-"vd": 4.284,
+"t": 35.028,
+"v": 35.128,
+"vd": 3.662,
 "text": "Waxay badda ka soo kiciyaan biyo qabow. Hawo qabow roob ma keento.",
-"end": 45.876
+"end": 38.91
 },
 {
 "id": "s11",
-"t": 45.876,
-"v": 45.976,
-"vd": 2.952,
+"t": 38.91,
+"v": 39.01,
+"vd": 2.53,
 "text": "Jilaalka, dabaylo qalalan ayaa ka yimaada woqooyi-bari.",
-"end": 49.128
+"end": 41.66
 },
 {
 "id": "s12",
-"t": 49.128,
-"v": 49.228,
-"vd": 2.124,
+"t": 41.66,
+"v": 41.76,
+"vd": 1.833,
 "text": "Maxaad rabtaa inaan sharaxo marka xigta?",
-"end": 51.552
+"end": 43.713
 },
 {
 "id": "s13",
-"t": 51.552,
-"v": 51.652,
-"vd": 2.886,
+"t": 43.713,
+"v": 43.813,
+"vd": 2.521,
 "text": "Like noo dhiib oo subscribe si aad wax badan u barato!",
-"end": 56.138
+"end": 48.534
 }
 ];
-window.DUR = 56.138;
+window.DUR = 48.534;

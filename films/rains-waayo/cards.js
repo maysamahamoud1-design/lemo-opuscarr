@@ -1,4 +1,6 @@
   // ═════════ the rain story's cards (spliced into film.js by tools/splice.py) ═════════
+  const split2 = (tw, t0, sc, D, T, ev = []) => { card(t0, sc, D, T, ev); const off = tw - 0.1 - t0;
+    card(t0 + off, sc, (ctx, lt, P, t) => D(ctx, lt + off, P, t), typeof T === 'function' ? (lt) => T(lt + off) : T, []); };
   const afr = ([lon, lat]) => [CX + (lon - 32) * 8.6, CY - (lat - 2) * 8.6];
   const horn = ([lon, lat]) => [CX + (lon - 46.5) * 40, CY - (lat - 5.5) * 40];
   const clipStage = (ctx, f) => { ctx.save(); ctx.beginPath(); ctx.arc(CX, CY, R, 0, Math.PI * 2); ctx.clip(); f(); ctx.restore(); };
@@ -34,7 +36,7 @@
 
   // ——— 1 · hook: two rainy seasons… why? ———
   const somProj = (cx, cy, s) => ([lon, lat]) => [cx + (lon - 46) * s, cy - (lat - 6) * s];
-  card(0, 's01', (ctx, lt) => {
+  const opening = (ctx, lt) => {
     G.geo(ctx, window.SOM, somProj(500, 820, 27), mix(DRY, WET, E.io(inv(0.6, 1.6, lt))));
     [[330, 520, 0], [690, 470, 1]].forEach(([x, y, i]) => {
       const k = E.oBack(inv(0.1 + i * 0.25, 0.45 + i * 0.25, lt)); if (k <= 0) return;
@@ -42,7 +44,8 @@
       G.cloud(ctx, x, y, 120 * k, '#ffffff');
       pill(ctx, i ? 'DEYR' : "GU'", x, y - 150, PAL.blue.t[1], CREAM, E.oBack(inv(0.5 + i * 0.25, 0.8 + i * 0.25, lt)));
     });
-  }, 'WAAYO?', [[0.1, 'pop'], [0.35, 'pop'], [0.6, 'rain', { dur: 2.2, gain: 0.7 }]]);
+  };
+  card(0, 's01', (ctx, lt) => opening(ctx, lt), 'WAAYO?', [[0.1, 'pop'], [0.35, 'pop'], [0.6, 'rain', { dur: 2.0, gain: 0.7 }]]);
   card(wt('s01', 'waa') - 0.1, 's01', (ctx, lt) => {
     const k = E.oBack(inv(0, 0.35, lt), 2.2);
     ctx.save(); ctx.translate(CX, CY); ctx.scale(k, k); disc(ctx, 0, 0, 290, PAL.sun.t[2]);
@@ -64,7 +67,7 @@
     }
     return [x0, cw + gap];
   };
-  card(S('s02').t, 's02', (ctx, lt) => {
+  split2(wt('s02', 'deyr'), S('s02').t, 's02', (ctx, lt) => {
     const tg = sinceW('s02', 'gu'), td = sinceW('s02', 'deyr');
     const gu = E.o3(inv(tg, tg + 0.6, lt)), de = E.o3(inv(td, td + 0.6, lt));
     const [x0, st] = calendar(ctx, 900, lt, gu, de);
@@ -86,7 +89,7 @@
     ctx.save(); ctx.beginPath(); ctx.rect(0, 0, W * reveal, H); ctx.clip(); clipStage(ctx, () => belt(ctx, eqY + 20, 1, lt)); ctx.restore();
     pill(ctx, 'ITCZ', CX, eqY - 120, INK, CREAM, E.oBack(inv(0.6, 0.9, lt)), 46);
   }, 'ITCZ', [[0.2, 'whoosh', { dur: 1.0 }], [0.6, 'pop']]);
-  card(S('s04').t, 's04', (ctx, lt) => {
+  split2(wt('s04', 'dhulbaraha'), S('s04').t, 's04', (ctx, lt) => {
     africa(ctx);
     clipStage(ctx, () => belt(ctx, eqY + 20, 1, lt));
     equator(ctx, E.o3(inv(sinceW('s04', 'dhulbaraha') - 0.2, sinceW('s04', 'dhulbaraha') + 0.3, lt)));
@@ -97,10 +100,10 @@
       flow(ctx, [x + 120, CY + 330], [x + 30, eqY + 90], lt, PAL.teal.t[0], E.o3(inv(ts + i * 0.1, ts + 0.7 + i * 0.1, lt)));
     }
     pill(ctx, 'DHULBARAHA', CX - 180, eqY + 150, INK, CREAM, E.oBack(inv(sinceW('s04', 'dhulbaraha'), sinceW('s04', 'dhulbaraha') + 0.3, lt)), 30);
-  }, (lt) => (lt < sinceW('s04', 'dhulbaraha') - 0.2 ? 'DABAYLAHA' : 'DHULBARAHA'), [[0, 'swipe'], [sinceW('s04', 'woqooyi'), 'swipe'], [sinceW('s04', 'koonfur'), 'swipe'], [sinceW('s04', 'dhulbaraha'), 'click'], [0.2, 'wind', { dur: 3.5, gain: 0.6 }]]);
+  }, 'DABAYLAHA', [[0, 'swipe'], [sinceW('s04', 'woqooyi'), 'swipe'], [sinceW('s04', 'koonfur'), 'swipe'], [sinceW('s04', 'dhulbaraha'), 'click'], [0.2, 'wind', { dur: 3.5, gain: 0.6 }]]);
 
   // ——— 5 · warm moist air rises, cools, becomes rain ———
-  card(S('s05').t, 's05', (ctx, lt) => {
+  split2(wt('s05', 'roobna'), S('s05').t, 's05', (ctx, lt) => {
     const tq = sinceW('s05', 'qabowdaa'), tr = sinceW('s05', 'roobna');
     rrect(ctx, CX - 330, 1000, 660, 70, 20, DRY);
     for (let i = 0; i < 4; i++) {
@@ -112,10 +115,10 @@
     if (c > 0) G.cloud(ctx, CX, 560, 230 * c, '#ffffff');
     if (lt > tr) for (let j = 0; j < 9; j++) { const u = ((lt - tr) * 1.4 + j * 0.11) % 1; G.drop(ctx, CX - 200 + j * 50, 600 + u * 360, 11, rgba(PAL.blue.t[1], 1 - u)); }
     pill(ctx, 'HAWO KULUL', CX, 1140 - 120, PAL.coral.t[1], CREAM, E.oBack(inv(0.2, 0.5, lt)), 30);
-  }, (lt) => (lt < sinceW('s05', 'qabowdaa') ? 'HAWO KULUL' : lt < sinceW('s05', 'roobna') ? 'QABOW' : 'ROOB'), [[0.2, 'air', { dur: 2.5, gain: 0.8 }], [sinceW('s05', 'qabowdaa'), 'pop'], [sinceW('s05', 'roobna'), 'rain', { dur: 1.6 }]]);
+  }, 'HAWO KULUL', [[0.2, 'air', { dur: 2.5, gain: 0.8 }], [sinceW('s05', 'qabowdaa'), 'pop'], [sinceW('s05', 'roobna'), 'rain', { dur: 1.6 }]]);
 
   // ——— 6 · the belt follows the sun: north in July, south in January ———
-  card(S('s06').t, 's06', (ctx, lt) => {
+  split2(wt('s06', 'koonfur'), S('s06').t, 's06', (ctx, lt) => {
     const tn = sinceW('s06', 'woqooyi'), ts = sinceW('s06', 'koonfur');
     const lat = lerp(lerp(0, 22, E.io3(inv(tn, tn + 0.9, lt))), -22, E.io3(inv(ts, ts + 0.9, lt)));
     africa(ctx);
@@ -151,7 +154,7 @@
 
   // ——— 9 · Xagaa: the monsoon runs along the coast ———
   const COAST = [[42.6, -0.4], [45.3, 2.0], [48.3, 5.5], [50.8, 9.5], [51.3, 11.8]];
-  card(S('s09').t, 's09', (ctx, lt) => {
+  split2(wt('s09', 'monsoon'), S('s09').t, 's09', (ctx, lt) => {
     hornMap(ctx, 0.1, 'coral');
     const tm = sinceW('s09', 'monsoon');
     for (let r = 0; r < 3; r++) for (let i = 0; i < COAST.length - 1; i++) {
@@ -160,10 +163,10 @@
     }
     G.sun(ctx, CX - 230, 500, 50, PAL.sun.t[2], lt * 0.4);
     pill(ctx, 'XAGAA · LUULYO–SEBTEMBAR', CX, 1060, PAL.coral.t[1], CREAM, E.oBack(inv(0, 0.3, lt)), 28);
-  }, (lt) => (lt < sinceW('s09', 'monsoon') ? 'XAGAA' : 'MONSOON'), [[0, 'pop'], [sinceW('s09', 'monsoon') - 0.3, 'whoosh', { dur: 1.2 }], [0.5, 'wind', { dur: 4, gain: 0.7 }]]);
+  }, 'XAGAA', [[0, 'pop'], [sinceW('s09', 'monsoon') - 0.3, 'whoosh', { dur: 1.2 }], [0.5, 'wind', { dur: 4, gain: 0.7 }]]);
 
   // ——— 10 · the winds lift cold water from the sea; cold air brings no rain ———
-  card(S('s10').t, 's10', (ctx, lt) => {
+  split2(wt('s10', 'hawo'), S('s10').t, 's10', (ctx, lt) => {
     const th = sinceW('s10', 'hawo');
     clipStage(ctx, () => {
       ctx.fillStyle = '#cfe6f5'; ctx.fillRect(0, 0, W, 760);
@@ -179,7 +182,7 @@
       G.drop(ctx, CX - 120, 700, 18 * c, PAL.blue.t[1]);
       const x = E.o3(inv(th + 0.5, th + 0.8, lt)); if (x > 0) { G.seg(ctx, [CX - 175, 645], [lerp(CX - 175, CX - 65, x), lerp(645, 755, x)], 14, PAL.coral.t[1]); G.seg(ctx, [CX - 65, 645], [lerp(CX - 65, CX - 175, x), lerp(645, 755, x)], 14, PAL.coral.t[1]); }
     }
-  }, (lt) => (lt < sinceW('s10', 'hawo') ? 'BIYO QABOW' : 'ROOB MA KEENTO'), [[0, 'tear', { dur: 0.8 }], [0.2, 'sea', { dur: 2.6, gain: 0.8 }], [sinceW('s10', 'hawo'), 'pop'], [sinceW('s10', 'hawo') + 0.5, 'click']]);
+  }, 'BIYO QABOW', [[0, 'tear', { dur: 0.8 }], [0.2, 'sea', { dur: 2.6, gain: 0.8 }], [sinceW('s10', 'hawo'), 'pop'], [sinceW('s10', 'hawo') + 0.5, 'click']]);
 
   // ——— 11 · Jilaal: dry wind from the north-east ———
   card(S('s11').t, 's11', (ctx, lt) => {

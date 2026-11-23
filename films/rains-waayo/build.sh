@@ -9,6 +9,8 @@ python3 "$HERE/tools/timeline.py"
 .venv/bin/python "$HERE/tools/words.py"
 python3 -c "import json;W=json.load(open('$HERE/voices/words.json'));open('$HERE/voices/words.js','w').write('window.WORDS = '+json.dumps(W,ensure_ascii=False)+';\n')"
 python3 "$HERE/tools/srt.py"
+python3 "$HERE/tools/splice.py" "$HERE/../waayo-vitamin-d/engine-film.js"
+python3 "$HERE/tools/loop.py"
 node core/render/events.mjs "$HERE" --size 1080x1920
 .venv/bin/python "$HERE/mix.py"
 node core/render/video.mjs "$HERE" --size 1080x1920 --fps 24 --workers ${WORKERS:-3} --out "$HERE/out/video.mp4"
