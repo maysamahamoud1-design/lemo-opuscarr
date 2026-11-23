@@ -1,0 +1,37 @@
+[
+ {
+  "id": "s01",
+  "text": "Geed yar oo ku dheggan buuraha Soomaaliya… waagii hore qiimihiisu wuxuu la mid ahaa dahab. Waayo?",
+  "say": "Geed yar oo ku dheggan buuraha Soomaaliya. Waagii hore qiimihiisu wuxuu la mid ahaa dahab. Waayo?"
+ },
+ {
+  "id": "s02",
+  "text": "Waa geedka beeyada. Marka jirridda si yar loo jaro, dheecaan ayaa ka soo baxa oo engega. Taasi waa beeyada."
+ },
+ {
+  "id": "s03",
+  "text": "Wuxuu ku baxaa dhul engegan oo dhagax ah, inta badan buuraha waqooyiga Soomaaliya, meel dalagyo kale aysan ku noolaan karin."
+ },
+ {
+  "id": "s04",
+  "text": "Laba nooc ayaa caan ah: Beeyo iyo Meydi. Meydiga waxaa loogu yeeraa 'boqorka beeyada', wuxuuna ka baxaa Soomaaliya oo keliya.",
+  "say": "Laba nooc ayaa caan ah: Beeyo iyo Meydi. Meydiga waxaa loogu yeeraa, boqorka beeyada, wuxuuna ka baxaa Soomaaliya oo keliya."
+ },
+ {
+  "id": "s05",
+  "text": "Kumanaan sano ayaa laga ganacsanayay. Masaaridii hore waxay beeyo ka keeni jireen 'Dhulka Punt', oo taariikhyahanno badan ay rumaysan yihiin inuu ahaa Geeska Afrika.",
+  "say": "Kumanaan sano ayaa laga ganacsanayay. Masaaridii hore waxay beeyo ka keeni jireen Dhulka Bunt, oo taariikhyahanno badan ay rumaysan yihiin inuu ahaa Geeska Afrika."
+ },
+ {
+  "id": "s06",
+  "text": "Maanta waxaa loo isticmaalaa uunsiga, cadarka iyo daawooyinka dhaqameed adduunka oo dhan."
+ },
+ {
+  "id": "s07",
+  "text": "Laakiin geedaha ayaa khatar ku jira. Haddii si xad-dhaaf ah loo jaro, geedku wuxuu u baahan karaa toban sano ama ka badan si uu u bogsado."
+ },
+ {
+  "id": "s08",
+  "text": "Ma ilaalin doonnaa dahabkeenna? Adiga, gurigiinna beeyo ma lagu shidaa?"
+ }
+]
