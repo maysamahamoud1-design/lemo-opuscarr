@@ -14,3 +14,4 @@
 | §5 timing | beat lock to music | voice lock: changes on spoken words, every 1–3 s | no music; quick pacing |
 | §7 sound | percussion spine, plucks, mallets, pads | no music, no instruments, nothing pitched; noise-based whoosh, swipe, pop, click, light wind, sparkle | channel rule |
 | §2 figures | one skin tone (ink) | plain-disc heads in varied skin tones; covered and child variants | the stories need them |
+| §5, §7 (favourite standard) | voice lock, cards every 1–3 s | Muuse +22 %, 0.22 s gaps, 2–4 cards per scene, a whoosh on every card change, a looping ending | the owner's favourite: *Waayo? · Shaah* |

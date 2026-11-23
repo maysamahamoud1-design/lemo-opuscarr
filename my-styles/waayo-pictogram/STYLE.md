@@ -6,6 +6,17 @@ Default size: 1080×1920.
 > The Fahaan "Waayo?" series: a vertical explainer built from flat, faceless **pictograms** made of round-capped bars, discs and capsules, set on a **light ground** with a low-contrast grid pattern, one **hue per chapter**, and huge **Montserrat** titles. A Somali voice carries it; every card change and every key action lands on a spoken word, every 1–3 s. Captions are karaoke, the word being said in yellow. A small Fahaan watermark sits in the top-left corner of every frame.
 > References (grammar only): geometric sports pictograms (figures from bars and discs); "look of the games" identity systems (a modular pattern + a colour set used for everything); broadcast graphics (mono meta text, tick-bar progress). Never copy any real event's pictograms, emblem, pattern artwork or colour names.
 
+## The favourite standard (the user's choice, from *Waayo? · Shaah*)
+
+The channel owner named `films/waayo-shaah` their favourite. Match it unless they ask otherwise:
+
+- **Voice pace**: Muuse at **+22 %**, **0.22 s** between lines. Don't slow him down to reach a length; tell the owner the length instead.
+- **Switching**: every scene cut into **2–4 cards** on its key words (a scene that is one drawing can still be two cards: the same drawing, the second card's clock offset), so the picture changes every 1.5–3 s.
+- **Swooshes**: a whoosh on **every** card change (0.45 s, under the voice) and on every chapter wipe.
+- **Loop**: the opening shot is one function, reused as the last card; it resets to frame 0's state in the last 0.5 s; the HUD and captions fade in at the start and out at the end; the kicker and title are fully set on frame 0; the background rows drift on a cycle of the film's length. Check the first and last frames match.
+- **Titles** held ≥ about 2 s: merge a title into the next one rather than flash it.
+- Peaks: limit the mix to −1.5 dBTP or lower when clinks or dings are used.
+
 ## 1. Essence, and what it is not
 
 A **question answered in pictograms**: the film opens on "WAAYO?" and the question, then explains the cause step by step, one card per idea, and closes by asking viewers what to explain next. Each card = **one pictogram doing one action + a huge title (a key word of the line) + the spoken line as karaoke captions**. Cards group into chapters; each chapter owns one hue.
@@ -100,6 +111,7 @@ A locked vertical frame; energy comes from cards, pops, band transitions and wip
 
 - `demo/engine.js`: the base engine adapted to 1080×1920: palette (`G.PAL` with `bg` and `band` per hue), easings, `G.pattern` / `G.drawPattern`, motifs, `G.maskText`.
 - `demo/picto.js`: this style's pictograms: `G.figure` (faceless; covered, child, bowed legs), `G.sun`, `G.ray`, `G.dDisc`, `G.meter`, `G.bone`, `G.pain`, `G.plane`, `G.house`, `G.snow`, `G.city`, `G.battery`, `G.tube`, `G.bottle`, `G.capsule`, `G.tick`, `G.timer`, `G.bubble`, `G.arrowDown`, `G.thumb`, `G.bell`, `G.geo` (map polygons).
+- **Reference film for the favourite standard**: `films/waayo-shaah/` in the owner's repository (`cards.js` + `tools/splice.py`: the loop and the whoosh-per-card patches).
 - `demo/film.js`: the cards (`card(t0, scene, draw, title, events)`), word-timed with `wt(scene, word, n)`, the band transitions, chapter wipes, HUD, karaoke captions (phrase chunks), watermark, sound events, `TEXTS`.
 - `demo/icon.js`: the Fahaan icon. `demo/geo.js` from `demo/tools/geo.mjs` (Natural Earth via world-atlas).
 - `demo/tools/`: `timeline.py` (scene times from voice lengths), `words.py` (karaoke word times from the audio), `srt.py`, `fonts.sh`. `demo/tts_azure.py`, `demo/mix.py`.

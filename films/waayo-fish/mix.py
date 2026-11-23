@@ -88,6 +88,6 @@ def lufs(path):
     o = subprocess.run(['ffmpeg', '-nostats', '-i', path, '-af', 'ebur128=peak=true', '-f', 'null', '-'], capture_output=True, text=True).stderr
     return float(re.findall(r'I:\s+(-?[\d.]+) LUFS', o)[-1])
 I0 = lufs(tmp); gain = 10 ** ((-14 - I0) / 20); mix = mix * gain
-for c in range(2): mix[:, c] = limit(mix[:, c], ceil=.84)
+for c in range(2): mix[:, c] = limit(mix[:, c], ceil=.72)
 out = os.path.join(H, 'out', 'mix.wav'); sf.write(out, mix, SR, subtype='PCM_24'); os.remove(tmp)
 print('measured', I0, 'LUFS → gain', round(20 * np.log10(gain), 2), 'dB; final', lufs(out), 'LUFS;', round(len(mix) / SR, 2), 's')

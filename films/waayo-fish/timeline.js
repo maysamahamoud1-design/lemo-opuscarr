@@ -4,65 +4,65 @@ window.SC = [
 "id": "s01",
 "t": 0,
 "v": 0.1,
-"vd": 5.146,
+"vd": 4.228,
 "text": "Badda Soomaaliya waxay ka mid tahay badaha ugu kalluunka badan adduunka. Waayo?",
-"end": 5.496
+"end": 4.448
 },
 {
 "id": "s02",
-"t": 5.496,
-"v": 5.596,
-"vd": 6.948,
+"t": 4.448,
+"v": 4.548,
+"vd": 5.71,
 "text": "Soomaaliya waxay leedahay xeebta ugu dheer Afrika dhuleedka: ku dhawaad 3,333 kiloomitir.",
-"end": 12.794
+"end": 10.378
 },
 {
 "id": "s03",
-"t": 12.794,
-"v": 12.894,
-"vd": 5.362,
+"t": 10.378,
+"v": 10.478,
+"vd": 4.411,
 "text": "Xilliga xagaaga, dabaylo xoog leh oo koonfur-galbeed ka imanaya ayaa ku dhaca xeebta Soomaaliya.",
-"end": 18.506
+"end": 15.009
 },
 {
 "id": "s04",
-"t": 18.506,
-"v": 18.606,
-"vd": 6.47,
+"t": 15.009,
+"v": 15.109,
+"vd": 5.316,
 "text": "Dabayshu waxay biyaha kulul ka riixdaa xeebta. Markaas biyo qabow oo nafaqo leh ayaa hoosta ka soo baxa.",
-"end": 25.326
+"end": 20.545
 },
 {
 "id": "s05",
-"t": 25.326,
-"v": 25.426,
-"vd": 7.534,
+"t": 20.545,
+"v": 20.645,
+"vd": 6.193,
 "text": "Nafaqadaas waxay quudisaa dhir yaryar oo badda ku jira, kuwaasoo quudiya kalluunka yaryar, kadibna kalluunka waaweyn sida tuunada.",
-"end": 33.21
+"end": 26.958
 },
 {
 "id": "s06",
-"t": 33.21,
-"v": 33.31,
-"vd": 6.302,
+"t": 26.958,
+"v": 27.058,
+"vd": 5.189,
 "text": "Saynisyahannadu waxay sheegaan inay tani tahay biyo-kor-u-soo-bixidda ugu xoogga badan adduunka marka ay ugu sarreyso.",
-"end": 39.862
+"end": 32.367
 },
 {
 "id": "s07",
-"t": 39.862,
-"v": 39.962,
-"vd": 4.628,
+"t": 32.367,
+"v": 32.467,
+"vd": 3.815,
 "text": "Laakiin la yaab: Soomaalidu waxay ka mid yihiin dadka adduunka ugu kalluun yar cuna.",
-"end": 44.84
+"end": 36.402
 },
 {
 "id": "s08",
-"t": 44.84,
-"v": 44.94,
-"vd": 2.87,
+"t": 36.402,
+"v": 36.502,
+"vd": 2.364,
 "text": "Adiga, kalluun ma cuntaa? Noo sheeg!",
-"end": 50.21
+"end": 41.066
 }
 ];
-window.DUR = 50.21;
+window.DUR = 41.066;

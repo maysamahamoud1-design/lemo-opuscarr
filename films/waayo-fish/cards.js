@@ -55,7 +55,7 @@
   const OFF = [[44.5, 12.6], [48.5, 12.4], [51.9, 11.6], [51.3, 8.6], [49.6, 5.6], [47.0, 2.4], [44.0, -0.6]];   // a path just offshore
 
   // ——— 1 · hook: one of the world's richest seas… why? ———
-  card(0, 's01', (ctx, lt) => {
+  const opening = (ctx, lt) => {
     hornMap(ctx);
     // a shoal bursts across, curving round the Horn
     for (let i = 0; i < 34; i++) {
@@ -64,7 +64,8 @@
       if (lt < G.hash(i + 3) * 0.4) continue;
       fish(ctx, x, y, 26 + 10 * G.hash(i + 11), Math.atan2(y2 - y, 10), i % 4 ? TEAL : NAVY);
     }
-  }, 'WAAYO?', [[0.05, 'splash'], [0.1, 'whoosh', { dur: 1.0 }], [0.2, 'sea', { dur: 4.5, gain: 0.8 }]]);
+  };
+  card(0, 's01', (ctx, lt) => opening(ctx, lt), 'WAAYO?', [[0.05, 'splash'], [0.1, 'whoosh', { dur: 1.0 }], [0.2, 'sea', { dur: 4.0, gain: 0.8 }]]);
   card(wt('s01', 'kalluunka') - 0.15, 's01', (ctx, lt) => {
     // the stage fills with fish circling
     clipStage(ctx, () => { ctx.fillStyle = PAL.aqua.t[3]; ctx.fillRect(0, 0, W, H);
@@ -79,7 +80,7 @@
   }, 'WAAYO?', [[0, 'pop'], [0.3, 'splash', { gain: 0.6 }]]);
 
   // ——— 2 · the longest coast in mainland Africa: about 3,333 km ———
-  card(S('s02').t, 's02', (ctx, lt) => {
+  const coastD = (ctx, lt) => {
     const t0 = sinceW('s02', 'xeebta') - 0.2, tn = sinceW('s02', '3,333');
     hornMap(ctx);
     clipStage(ctx, () => { const e = coastLine(ctx, E.io(inv(t0, tn + 0.8, lt)), CORAL); if (e && lt < tn + 0.8) disc(ctx, e[0], e[1], 18, CORAL); });
@@ -90,7 +91,10 @@
     if (p > 0) { ctx.save(); ctx.globalAlpha = clamp(p * 4) * 0.82; disc(ctx, CX, 760, 250, CREAM); ctx.restore(); }
     bigNum(ctx, 3333, CX, 730, 150, p, CORAL, (v) => Math.round(v).toLocaleString('en-US'));
     if (p > 0) { ctx.save(); ctx.globalAlpha = clamp(p * 3); ctx.fillStyle = NAVY; ctx.font = '900 70px Montserrat'; ctx.textAlign = 'center'; ctx.fillText('KM', CX, 850); ctx.restore(); }
-  }, (lt) => (lt < sinceW('s02', '3,333') - 0.1 ? 'XEEBTA UGU DHEER' : 'AFRIKA #1'), [[sinceW('s02', 'xeebta') - 0.2, 'whoosh', { dur: 2.6, gain: 0.7 }], [sinceW('s02', '3,333') - 0.1, 'tick', { dur: 1.3 }], [sinceW('s02', '3,333') + 1.3, 'pop']]);
+  };
+  card(S('s02').t, 's02', coastD, 'XEEBTA UGU DHEER', [[sinceW('s02', 'xeebta') - 0.2, 'whoosh', { dur: 2.0, gain: 0.6 }]]);
+  const coastDo = wt('s02', '3,333', 0) - 0.1 - S('s02').t;
+  card(S('s02').t + coastDo, 's02', (ctx, lt) => coastD(ctx, lt + coastDo), 'AFRIKA #1', [[0, 'tick', { dur: 1.2 }], [1.3, 'pop']]);
 
   // ——— 3 · Xagaa: strong south-west monsoon winds along the coast ———
   card(S('s03').t, 's03', (ctx, lt) => {
@@ -115,7 +119,7 @@
   }, 'KOONFUR-GALBEED', [[0, 'swipe'], [0.1, 'gust', { dur: 1.4 }]]);
 
   // ——— 4 · upwelling: the wind pushes warm water away; cold, nutrient-rich water rises ———
-  card(S('s04').t, 's04', (ctx, lt) => {
+  const upD = (ctx, lt) => {
     const tm = sinceW('s04', 'markaas'), push = E.io(inv(0.4, tm, lt)), rise = E.io(inv(tm - 0.1, tm + 1.8, lt));
     clipStage(ctx, () => {
       ctx.fillStyle = '#eaf6fb'; ctx.fillRect(0, 0, W, 560);
@@ -133,7 +137,10 @@
     pill(ctx, 'BIYO KULUL', 820, 640, CORAL, CREAM, E.oBack(inv(sinceW('s04', 'kulul') - 0.1, sinceW('s04', 'kulul') + 0.2, lt)), 26);
     pill(ctx, 'BIYO QABOW + NAFAQO', CX + 40, 1060, CREAM, NAVY, E.oBack(inv(sinceW('s04', 'qabow') - 0.1, sinceW('s04', 'qabow') + 0.2, lt)), 26);
     pill(ctx, 'XEEB', 150, 470, NAVY, CREAM, 1, 24);
-  }, (lt) => (lt < sinceW('s04', 'markaas') - 0.1 ? 'BIYO KULUL' : 'BIYO QABOW'), [[0, 'tear', { dur: 0.6, gain: 0.6 }], [0.2, 'sea', { dur: 5.5, gain: 0.7 }], [0.4, 'whoosh', { dur: 1.2 }], [sinceW('s04', 'markaas'), 'bubbles', { dur: 2.2 }]]);
+  };
+  card(S('s04').t, 's04', upD, 'BIYO KULUL', [[0.2, 'sea', { dur: 3.0, gain: 0.7 }], [0.4, 'whoosh', { dur: 1.0 }]]);
+  const upDo = wt('s04', 'markaas', 0) - 0.1 - S('s04').t;
+  card(S('s04').t + upDo, 's04', (ctx, lt) => upD(ctx, lt + upDo), 'BIYO QABOW', [[0, 'bubbles', { dur: 2.0 }]]);
 
   // ——— 5 · the food chain: plankton → small fish → bigger fish → tuna ———
   card(S('s05').t, 's05', (ctx, lt) => {
@@ -157,7 +164,7 @@
 
   // ——— 6 · the strongest upwelling in the world at its peak ———
   const wp = ([lon, lat]) => [CX + (lon - 30) * 5.2, CY - (lat - 5) * 5.2 * 1.12];
-  card(S('s06').t, 's06', (ctx, lt) => {
+  const worldD = (ctx, lt) => {
     clipStage(ctx, () => { ctx.fillStyle = PAL.aqua.t[4]; ctx.fillRect(0, 0, W, H); G.geo(ctx, window.LAND, wp, SAND); G.geo(ctx, window.SOM, wp, mix(SAND, '#c9a86a', 0.6)); });
     const s = wp([55.5, 8]);
     for (let i = 0; i < 3; i++) { const u = (lt * 0.7 + i / 3) % 1; G.ring(ctx, s[0], s[1], 20 + u * 95, 10 * (1 - u), rgba(CORAL, 1 - u)); }
@@ -165,7 +172,10 @@
     const tx = sinceW('s06', 'xoogga') - 0.2, k = E.oBack(inv(tx, tx + 0.35, lt), 2.2);
     if (k > 0) { disc(ctx, s[0] + 150, s[1] - 170, 105 * k, CORAL); ctx.save(); ctx.fillStyle = CREAM; ctx.font = `900 ${Math.round(110 * k)}px Montserrat`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('#1', s[0] + 150, s[1] - 162); ctx.restore(); }
     source(ctx, 'NOC', E.o3(inv(tx + 0.4, tx + 0.8, lt)));
-  }, (lt) => (lt < sinceW('s06', 'xoogga') - 0.2 ? 'SAYNISKA' : 'UGU XOOGGA BADAN'), [[0, 'whoosh', { dur: 0.8 }], [0.4, 'bubbles', { dur: 1.0, gain: 0.6 }], [sinceW('s06', 'xoogga') - 0.2, 'pop'], [sinceW('s06', 'xoogga'), 'sparkle', { dur: 0.7 }]]);
+  };
+  card(S('s06').t, 's06', worldD, 'SAYNISKA', [[0.4, 'bubbles', { dur: 1.0, gain: 0.6 }]]);
+  const worldDo = wt('s06', 'xoogga', 0) - 0.1 - S('s06').t;
+  card(S('s06').t + worldDo, 's06', (ctx, lt) => worldD(ctx, lt + worldDo), 'UGU XOOGGA BADAN', [[0.1, 'pop'], [0.3, 'sparkle', { dur: 0.7 }]]);
 
   // ——— 7 · the twist: Somalis eat among the least fish in the world ———
   card(S('s07').t, 's07', (ctx, lt) => {
@@ -192,14 +202,16 @@
     if (b > 0) { ctx.save(); ctx.translate(CX, 600); ctx.scale(b, b); G.bubble(ctx, 0, 0, 700, 260, CREAM);
       fish(ctx, -150, 0, 46, 0, TEAL); for (let i = 0; i < 3; i++) disc(ctx, 20 + i * 90, 0, 24 * (0.75 + 0.25 * Math.sin(lt * 6 - i)), CORAL); ctx.restore(); }
     ctx.save(); ctx.translate(CX, 930); ctx.scale(k, k); ctx.fillStyle = INK; ctx.font = '900 170px Montserrat'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('WAAYO?', 0, 0); ctx.restore();
-    const s = E.oBack(inv(1.2, 1.6, lt), 1.6);
+    const s = E.oBack(inv(0.5, 0.85, lt), 1.6);
     if (s > 0) {
       ctx.save(); ctx.translate(CX, 1150); ctx.scale(s, s);
       disc(ctx, -300, 0, 62, AQUA); ctx.save(); ctx.translate(-300, 10); ctx.scale(0.5, 0.5); G.thumb(ctx, 0, 0, 170, CREAM, INK, TEAL); ctx.restore();
-      const done = lt > 2.3; rrect(ctx, -210, -52, 470, 104, 52, done ? INK : CORAL);
+      const done = lt > 1.25; rrect(ctx, -210, -52, 470, 104, 52, done ? INK : CORAL);
       G.bell(ctx, -150, -2, 44, CREAM); ctx.fillStyle = CREAM; ctx.font = '900 40px Montserrat'; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText('SUBSCRIBE', -100, 3);
-      if (done) { const q = E.oBack(inv(2.3, 2.6, lt)); disc(ctx, 262, -50, 34 * q, TEAL); G.tick(ctx, 262, -50, 40 * q, CREAM, E.oExp(inv(2.4, 2.7, lt))); }
+      if (done) { const q = E.oBack(inv(1.25, 1.5, lt)); disc(ctx, 262, -50, 34 * q, TEAL); G.tick(ctx, 262, -50, 40 * q, CREAM, E.oExp(inv(1.3, 1.6, lt))); }
       ctx.restore();
     }
     ctx.save(); ctx.globalAlpha = 0.7 * E.o3(inv(0.6, 1.0, lt)); ctx.font = '500 24px "DM Mono"'; ctx.letterSpacing = '2px'; ctx.fillStyle = INK; ctx.textAlign = 'center'; ctx.fillText('NOC, FAO', CX, 400); ctx.restore();
-  }, '', [[0, 'pop'], [0.3, 'pop'], [1.2, 'pop'], [2.3, 'click'], [2.45, 'sparkle', { dur: 0.6 }]]);
+  }, '', [[0, 'pop'], [0.3, 'pop'], [0.5, 'pop'], [1.25, 'click'], [1.4, 'sparkle', { dur: 0.6 }]]);
+  card(S('s08').v + S('s08').vd + 0.15, 's08', (ctx, lt, P, t) => opening(ctx, t > DUR - 0.5 ? 0 : lt), 'WAAYO?', [[0.05, 'splash', { gain: 0.6 }]]);
+  C[C.length - 1].loop = true;
