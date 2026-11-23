@@ -4,65 +4,65 @@ window.SC = [
 "id": "s01",
 "t": 0,
 "v": 0.1,
-"vd": 7.061,
+"vd": 6.954,
 "text": "Cudur aan calaamad lahayn… laakiin dhaawici kara wadnahaaga iyo maskaxdaada. Waayo dhiig-karka loogu yeeraa 'dilaaga aamusan'?",
-"end": 7.311
+"end": 7.174
 },
 {
 "id": "s02",
-"t": 7.311,
-"v": 7.411,
-"vd": 7.67,
+"t": 7.174,
+"v": 7.274,
+"vd": 7.533,
 "text": "Dhiig-karku waa marka dhiiggu si aad u xoog badan ugu riixo xididdada. Haddii cabbirkaagu yahay 140/90 ama ka badan, waa dhiig-kar.",
-"end": 15.231
+"end": 14.927
 },
 {
 "id": "s03",
-"t": 15.231,
-"v": 15.331,
-"vd": 6.698,
+"t": 14.927,
+"v": 15.027,
+"vd": 6.587,
 "text": "Inta badan wax calaamad ah ma dareemaysid. Adduunka oo dhan, 44% dadka qaba dhiig-karka ma oga inay qabaan.",
-"end": 22.179
+"end": 21.734
 },
 {
 "id": "s04",
-"t": 22.179,
-"v": 22.279,
-"vd": 11.394,
-"text": "Daraasad lagu sameeyay Soomaali ku nool Minnesota, Maraykanka: 10-kii nin, ku dhawaad 3 ayaa qaba dhiig-kar. 10-kii naagood, ku dhawaad 2. Khatartuna way sii kordhaysaa sannad kasta oo qurbaha lagu noolaado.",
-"end": 33.823
+"t": 21.734,
+"v": 21.834,
+"vd": 11.246,
+"text": "Daraasad lagu sameeyay Soomaali ku nool Minnesota, Maraykanka: 10-kii nin, ku dhawaad 3 ayaa qaba dhiig-kar. 10-kii haweenka, ku dhawaad 2. Khatartuna way sii kordhaysaa sannad kasta oo qurbaha lagu noolaado.",
+"end": 33.2
 },
 {
 "id": "s05",
-"t": 33.823,
-"v": 33.923,
-"vd": 5.968,
+"t": 33.2,
+"v": 33.3,
+"vd": 5.87,
 "text": "UK-ga, dadka Madow ee qaba dhiig-karka waxay 10% uga yar yihiin dadka kale inay dhiig-karkoodu xakameysan yahay.",
-"end": 40.041
+"end": 39.29
 },
 {
 "id": "s06",
-"t": 40.041,
-"v": 40.141,
-"vd": 4.454,
+"t": 39.29,
+"v": 39.39,
+"vd": 4.375,
 "text": "Haddii aan la daaweyn, dhiig-karku wuxuu keeni karaa istaroog, wadne-xanuun, iyo kelyo dhaawacan.",
-"end": 44.745
+"end": 43.885
 },
 {
 "id": "s07",
-"t": 44.745,
-"v": 44.845,
-"vd": 7.925,
+"t": 43.885,
+"v": 43.985,
+"vd": 7.789,
 "text": "Tallaabada ugu horreysa: iska cabbir dhiig-karka, xitaa haddii aad caafimaad qabto. Milix yar cun, socod samee, oo qaado daawada haddii dhakhtarku kuu qoro.",
-"end": 52.92
+"end": 51.894
 },
 {
 "id": "s08",
-"t": 52.92,
-"v": 53.02,
-"vd": 5.25,
+"t": 51.894,
+"v": 51.994,
+"vd": 5.176,
 "text": "Talo caafimaad maaha, la tasho dhakhtarkaaga. Adiga, goorma ayaad ugu dambeysay inaad iska cabbirto?",
-"end": 59.87
+"end": 59.37
 }
 ];
-window.DUR = 59.87;
+window.DUR = 59.37;

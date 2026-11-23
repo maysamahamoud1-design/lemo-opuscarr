@@ -10,7 +10,7 @@
     for (const x of WD[id]) if (x.w.toLowerCase().startsWith(p.toLowerCase()) && k++ === n) return S(id).v + x.t0;
     throw new Error(`word ${p}#${n} not in ${id}`);
   };
-  const HUE = { s01: 'coral', s02: 'teal', s03: 'blue', s04: 'sun', s05: 'blue', s06: 'coral', s07: 'green', s08: 'sun' };
+  const HUE = { s01: 'coral', s02: 'teal', s03: 'blue', s04: 'sun', s05: 'blue', s06: 'coral', s07: 'green', s08: 'coral' };
   const sceneAt = (t) => { let s = SC[0]; for (const x of SC) if (t >= x.t) s = x; return s; };
   const SUN = PAL.sun.t[2], SUNL = PAL.sun.t[3];
   const CX = 540, CY = 740, R = 360;          // the stage disc
@@ -21,6 +21,8 @@
   const card = (t0, sc, draw, title, ev = []) => C.push({ t0, sc, draw, title, ev });
 
   // ═════════ the blood-pressure story's cards (spliced into film.js by tools/splice.py) ═════════
+  const split2 = (tw, t0, sc, D, T, ev = []) => { card(t0, sc, D, T, ev); const off = tw - 0.1 - t0;
+    card(t0 + off, sc, (ctx, lt, P, t) => D(ctx, lt + off, P, t), typeof T === 'function' ? (lt) => T(lt + off) : T, []); };
   const RED = PAL.coral.t[1], REDL = PAL.coral.t[3], GRN = PAL.green.t[2], GREY = '#a9b1bd';
   const sinceW = (id, p, n = 0) => wt(id, p, n) - S(id).t;
   const pill = (ctx, s, x, y, bg, fg, k = 1, px = 38) => {
@@ -87,10 +89,11 @@
 
   // ——— 1 · hook: no symptoms… but it can damage your heart and brain ———
   const s1 = S('s01');
-  card(0, 's01', (ctx, lt) => {
-    const k = E.oExp(inv(0, 0.4, lt));
+  const opening = (ctx, lt) => {
+    const k = 1;
     ctx.save(); ctx.globalAlpha = k; walker(ctx, CX - 10 + Math.sin(lt * 0.9) * 20, 1080, 560, lt, G.SKIN_D, PAL.blue.t[1], beatAt(lt, 0.2)); ctx.restore();
-  }, 'WAAYO?', [[0.05, 'pop'], ...thumps(0.2, 1.9)]);
+  };
+  card(0, 's01', (ctx, lt) => opening(ctx, lt), 'WAAYO?', [[0.05, 'pop'], ...thumps(0.2, 1.9)]);
   card(wt('s01', 'laakiin') - 0.1, 's01', (ctx, lt) => {
     const k1 = E.oBack(inv(0, 0.3, lt)), k2 = E.oBack(inv(0.5, 0.8, lt));
     const tm = sinceW('s01', 'maskaxdaada') - (sinceW('s01', 'laakiin') - 0.1);
@@ -161,7 +164,7 @@
       bigNum(ctx, n, CX, ny, 96, p, RED, (v) => `${Math.round(v)} / 10`);
     });
     source(ctx, 'Minnesota Somali study, 2015–16', 1150, E.o3(inv(0.6, 1.0, lt)));
-  }, (lt) => (lt < sinceW('s04', '10-kii', 1) - 0.2 ? '10-KII NIN' : '10-KII NAAGOOD'), [[0.1, 'pop'], [sinceW('s04', '3'), 'pop'], [sinceW('s04', '2'), 'pop']]);
+  }, (lt) => (lt < sinceW('s04', '10-kii', 1) - 0.2 ? '10-KII NIN' : '10-KII HAWEENKA'), [[0.1, 'pop'], [sinceW('s04', '3'), 'pop'], [sinceW('s04', '2'), 'pop']]);
   card(wt('s04', 'khatartuna') - 0.1, 's04', (ctx, lt) => {
     // a calendar flipping years, and a line that rises
     const yr = Math.min(12, Math.floor(lt * 4));
@@ -182,7 +185,7 @@
   const s5 = S('s05');
   const ukp = ([lon, lat]) => [270 + (lon + 5) * 34, 830 - (lat - 54) * 34 * 1.65];
   const UKL = window.LAND.filter((r) => { const xs = r.map((p) => p[0]), ys = r.map((p) => p[1]); const cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2; return cx > -11 && cx < 2 && cy > 49 && cy < 61; });
-  card(s5.t, 's05', (ctx, lt) => {
+  split2(wt('s05', '10%'), s5.t, 's05', (ctx, lt) => {
     const k = E.oExp(inv(0, 0.4, lt));
     ctx.save(); ctx.globalAlpha = k; G.geo(ctx, UKL, ukp, PAL.blue.t[1]); ctx.restore();
     const t10 = sinceW('s05', '10%'), p = E.io3(inv(t10 - 0.4, t10 + 0.8, lt));
@@ -272,15 +275,19 @@
       ctx.restore();
     }
   }, '', [[0, 'pop'], [0.3, 'pop'], [1.2, 'pop'], [2.3, 'click'], [2.45, 'sparkle', { dur: 0.6 }]]);
+  // ——— the loop: back to the opening shot, which resets to frame 0 in the last half second ———
+  card(S('s08').v + S('s08').vd + 0.9, 's08', (ctx, lt, P, t) => opening(ctx, t > DUR - 0.5 ? 0 : lt), 'WAAYO?', [...thumps(0.2, 1.2)]);
+  C[C.length - 1].loop = true;
   // the bouncing arrow lives outside the card (it points down at the comments, under the captions)
 
+  C.sort((a, b) => a.t0 - b.t0);
   C.forEach((c, i) => (c.t1 = i + 1 < C.length ? C[i + 1].t0 : DUR));
 
   // ───────── frame ─────────
   const layerA = G.canvas(), layerB = G.canvas();
   const bgPat = (key) => G.pattern(key, 11, { spread: 0.13, density: 0.38, set: 'sun', base: PAL[key].bg });
   const fullPat = (key) => G.pattern(key, 23, { spread: 1, density: 0.55, set: 'sun' });
-  const rowDrift = (t) => (j) => (j % 2 ? 1 : -1) * t * 14;
+  const rowDrift = (t) => (j) => (j % 2 ? 1 : -1) * 90 * Math.sin(2 * Math.PI * t / DUR);
 
   function background(ctx, key, t) {
     ctx.fillStyle = PAL[key].bg; ctx.fillRect(0, 0, W, H);
@@ -300,11 +307,11 @@
     const s = titleOf(c, t); if (!s) return;
     // the mask slide restarts whenever the title text changes
     let since = c.t0; for (let u = c.t0; u < t; u += 0.05) if (titleOf(c, u) !== titleOf(c, u - 0.05)) since = u;
-    if (c.t0 === 0) since = -0.2;
+    if (c.t0 === 0) since = -1;
     ctx.save(); ctx.font = '900 140px Montserrat'; ctx.letterSpacing = '-2px';
     const px = Math.min(140, Math.floor(140 * 960 / ctx.measureText(s).width)); ctx.restore();
     G.maskText(ctx, s, CX, TY, `900 ${px}px Montserrat`, INK, inv(since, since + 0.35, t), { align: 'center', ls: '-2px' });
-    if (c.sc === 's01') G.maskText(ctx, KICK, CX, TY - 138, '800 40px Montserrat', PAL.sun.t[0], inv(-0.2, 0.15, t), { align: 'center', ls: '3px' });
+    if (c.sc === 's01' || c.loop) G.maskText(ctx, KICK, CX, TY - 138, '800 40px Montserrat', PAL.sun.t[0], 1, { align: 'center', ls: '3px' });
   }
   const KICK = 'DHIIG-KARKA · DILAAGA AAMUSAN';
   function hud(ctx, t, sc, P) {
@@ -392,9 +399,10 @@
       }
     } else { drawCard(layerB.getContext('2d'), c, t); ctx.drawImage(layerB, 0, 0); }
     title(ctx, c, t, P);
-    hud(ctx, t, sc, P);
-    const cap = captions(ctx, t, P, sc);
-    if (sc.id === 's08' && t > wt('s08', 'adiga') + 0.6) {   // the arrow points down to the comments
+    const edge = Math.min(inv(0, 0.2, t), 1 - inv(DUR - 0.55, DUR - 0.15, t));
+    ctx.save(); ctx.globalAlpha = edge; hud(ctx, t, sc, P);
+    const cap = captions(ctx, t, P, sc); ctx.restore();
+    if (sc.id === 's08' && !cardAt(t).loop && t > wt('s08', 'adiga') + 0.6) {   // the arrow points down to the comments
       const k = E.oBack(inv(wt('s08', 'adiga') + 0.6, wt('s08', 'adiga') + 0.9, t));
       G.arrowDown(ctx, CX, cap.y1 + 66 + Math.abs(Math.sin((t - s8.t) * 4)) * 14, 44 * k, INK);
     }
@@ -415,6 +423,7 @@
   for (const s of SC) EV.push({ t: s.v, type: 'voice', id: s.id });
   for (const w of WIPES) EV.push({ t: +(w.t - WIN).toFixed(3), type: 'whoosh', dur: 0.6 });
   C.forEach((c) => c.ev.forEach(([dt, type, o]) => EV.push({ t: +(c.t0 + dt).toFixed(3), type, ...(o || {}) })));
+  C.forEach((c, i) => { if (i && !WIPES.some((w) => Math.abs(w.t - c.t0) < 0.01)) EV.push({ t: +(c.t0 - 0.04).toFixed(3), type: 'whoosh', dur: 0.45, gain: 0.55 }); });
   EV.sort((a, b) => a.t - b.t);
 
   const cv = document.getElementById('c'), ctx = cv.getContext('2d');

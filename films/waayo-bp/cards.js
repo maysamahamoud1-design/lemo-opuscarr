@@ -1,4 +1,6 @@
   // ═════════ the blood-pressure story's cards (spliced into film.js by tools/splice.py) ═════════
+  const split2 = (tw, t0, sc, D, T, ev = []) => { card(t0, sc, D, T, ev); const off = tw - 0.1 - t0;
+    card(t0 + off, sc, (ctx, lt, P, t) => D(ctx, lt + off, P, t), typeof T === 'function' ? (lt) => T(lt + off) : T, []); };
   const RED = PAL.coral.t[1], REDL = PAL.coral.t[3], GRN = PAL.green.t[2], GREY = '#a9b1bd';
   const sinceW = (id, p, n = 0) => wt(id, p, n) - S(id).t;
   const pill = (ctx, s, x, y, bg, fg, k = 1, px = 38) => {
@@ -65,10 +67,11 @@
 
   // ——— 1 · hook: no symptoms… but it can damage your heart and brain ———
   const s1 = S('s01');
-  card(0, 's01', (ctx, lt) => {
-    const k = E.oExp(inv(0, 0.4, lt));
+  const opening = (ctx, lt) => {
+    const k = 1;
     ctx.save(); ctx.globalAlpha = k; walker(ctx, CX - 10 + Math.sin(lt * 0.9) * 20, 1080, 560, lt, G.SKIN_D, PAL.blue.t[1], beatAt(lt, 0.2)); ctx.restore();
-  }, 'WAAYO?', [[0.05, 'pop'], ...thumps(0.2, 1.9)]);
+  };
+  card(0, 's01', (ctx, lt) => opening(ctx, lt), 'WAAYO?', [[0.05, 'pop'], ...thumps(0.2, 1.9)]);
   card(wt('s01', 'laakiin') - 0.1, 's01', (ctx, lt) => {
     const k1 = E.oBack(inv(0, 0.3, lt)), k2 = E.oBack(inv(0.5, 0.8, lt));
     const tm = sinceW('s01', 'maskaxdaada') - (sinceW('s01', 'laakiin') - 0.1);
@@ -139,7 +142,7 @@
       bigNum(ctx, n, CX, ny, 96, p, RED, (v) => `${Math.round(v)} / 10`);
     });
     source(ctx, 'Minnesota Somali study, 2015–16', 1150, E.o3(inv(0.6, 1.0, lt)));
-  }, (lt) => (lt < sinceW('s04', '10-kii', 1) - 0.2 ? '10-KII NIN' : '10-KII NAAGOOD'), [[0.1, 'pop'], [sinceW('s04', '3'), 'pop'], [sinceW('s04', '2'), 'pop']]);
+  }, (lt) => (lt < sinceW('s04', '10-kii', 1) - 0.2 ? '10-KII NIN' : '10-KII HAWEENKA'), [[0.1, 'pop'], [sinceW('s04', '3'), 'pop'], [sinceW('s04', '2'), 'pop']]);
   card(wt('s04', 'khatartuna') - 0.1, 's04', (ctx, lt) => {
     // a calendar flipping years, and a line that rises
     const yr = Math.min(12, Math.floor(lt * 4));
@@ -160,7 +163,7 @@
   const s5 = S('s05');
   const ukp = ([lon, lat]) => [270 + (lon + 5) * 34, 830 - (lat - 54) * 34 * 1.65];
   const UKL = window.LAND.filter((r) => { const xs = r.map((p) => p[0]), ys = r.map((p) => p[1]); const cx = (Math.min(...xs) + Math.max(...xs)) / 2, cy = (Math.min(...ys) + Math.max(...ys)) / 2; return cx > -11 && cx < 2 && cy > 49 && cy < 61; });
-  card(s5.t, 's05', (ctx, lt) => {
+  split2(wt('s05', '10%'), s5.t, 's05', (ctx, lt) => {
     const k = E.oExp(inv(0, 0.4, lt));
     ctx.save(); ctx.globalAlpha = k; G.geo(ctx, UKL, ukp, PAL.blue.t[1]); ctx.restore();
     const t10 = sinceW('s05', '10%'), p = E.io3(inv(t10 - 0.4, t10 + 0.8, lt));
@@ -250,3 +253,6 @@
       ctx.restore();
     }
   }, '', [[0, 'pop'], [0.3, 'pop'], [1.2, 'pop'], [2.3, 'click'], [2.45, 'sparkle', { dur: 0.6 }]]);
+  // ——— the loop: back to the opening shot, which resets to frame 0 in the last half second ———
+  card(S('s08').v + S('s08').vd + 0.9, 's08', (ctx, lt, P, t) => opening(ctx, t > DUR - 0.5 ? 0 : lt), 'WAAYO?', [...thumps(0.2, 1.2)]);
+  C[C.length - 1].loop = true;

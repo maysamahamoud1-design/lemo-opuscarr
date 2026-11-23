@@ -1,6 +1,8 @@
 # Waayo? · Dhiig-kar: treatment
 
-"Waayo?" series in the user's Waayo Pictogram style. The user's eight scenes and script; 1080×1920, 59.9 s. Muuse at +20 % so the script fits 60 s; the like-and-subscribe close is on screen during the last line instead of a spoken line.
+"Waayo?" series in the user's Waayo Pictogram style. The user's eight scenes and script; 1080×1920.
+
+**Redone to the owner's favourite standard (the Shaah film):** 59.4 s; all lines re-voiced at +22 % with 0.22 s gaps; "naagood" changed to "haweenka" (the owner's permanent word rule) in the voice, captions and the title 10-KII HAWEENKA; scene 5 split into two cards; a whoosh on every card change; the closing scene now coral so a looping ending (the opening walking figure returns and resets to frame 0) matches the first frame. `tools/loop.py` applies the loop and whoosh patches after `tools/splice.py`. Muuse at +20 % so the script fits 60 s; the like-and-subscribe close is on screen during the last line instead of a spoken line.
 
 Structure (the user's): a cause chain with statistics. Thread: the heart and its beat (heard as a thump): beating quietly inside a walking figure (1), pushing on the vessel walls (2), unnoticed (3), counted in Minnesota (4) and the UK (5), cracked with the brain and kidneys (6), checked and protected (7).
 

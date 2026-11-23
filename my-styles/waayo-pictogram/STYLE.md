@@ -6,6 +6,10 @@ Default size: 1080×1920.
 > The Fahaan "Waayo?" series: a vertical explainer built from flat, faceless **pictograms** made of round-capped bars, discs and capsules, set on a **light ground** with a low-contrast grid pattern, one **hue per chapter**, and huge **Montserrat** titles. A Somali voice carries it; every card change and every key action lands on a spoken word, every 1–3 s. Captions are karaoke, the word being said in yellow. A small Fahaan watermark sits in the top-left corner of every frame.
 > References (grammar only): geometric sports pictograms (figures from bars and discs); "look of the games" identity systems (a modular pattern + a colour set used for everything); broadcast graphics (mono meta text, tick-bar progress). Never copy any real event's pictograms, emblem, pattern artwork or colour names.
 
+## Word rules (the owner's, permanent)
+
+- **Women: always "haweenka", never "naagood"** — in the voice, the captions, titles, labels and file text. Check every new script for "naag…" before voicing and replace it.
+
 ## The favourite standard (the user's choice, from *Waayo? · Shaah*)
 
 The channel owner named `films/waayo-shaah` their favourite. Match it unless they ask otherwise:
