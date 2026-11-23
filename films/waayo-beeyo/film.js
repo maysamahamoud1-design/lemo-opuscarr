@@ -75,13 +75,15 @@
   card(wt('s01', 'waagii') - 0.1, 's01', (ctx, lt) => {
     // a balance: resin tears on one pan, a gold coin on the other, level
     const k = E.oBack(inv(0, 0.35, lt)), tilt = 0.25 * Math.cos(lt * 3) * Math.exp(-lt * 1.6);
+    ctx.save(); ctx.translate(0, -90);
     G.seg(ctx, [CX, 1080], [CX, 640], 22, DBR); poly(ctx, [[CX - 110, 1090], [CX + 110, 1090], [CX, 1030]], DBR);
     ctx.save(); ctx.translate(CX, 640); ctx.rotate(tilt); G.seg(ctx, [-300, 0], [300, 0], 18, DBR);
     for (const s of [-1, 1]) { G.seg(ctx, [s * 300, 0], [s * 300 - 70, 160], 5, DBR); G.seg(ctx, [s * 300, 0], [s * 300 + 70, 160], 5, DBR); ctx.save(); ctx.fillStyle = mix(DBR, '#ffffff', 0.4); ctx.beginPath(); ctx.ellipse(s * 300, 165, 110, 22, 0, 0, Math.PI); ctx.fill(); ctx.restore(); }
     ctx.restore();
     const ly = 640 - 300 * Math.sin(tilt), ry = 640 + 300 * Math.sin(tilt);
     if (k > 0) { tears(ctx, CX - 300, ly + 130, 95 * k, 9); coin(ctx, CX + 300, ry + 105, 62 * k, 0.6 + 0.4 * Math.sin(lt * 5)); }
-    bigText(ctx, '= DAHAB', CX, 470, 90, E.oBack(inv(sinceW('s01', 'dahab.') - (sinceW('s01', 'waagii') - 0.1) - 0.1, sinceW('s01', 'dahab.') - (sinceW('s01', 'waagii') - 0.1) + 0.25, lt)), AMB);
+    ctx.restore();
+    bigText(ctx, '= DAHAB', CX, 430, 90, E.oBack(inv(sinceW('s01', 'dahab.') - (sinceW('s01', 'waagii') - 0.1) - 0.1, sinceW('s01', 'dahab.') - (sinceW('s01', 'waagii') - 0.1) + 0.25, lt)), AMB);
   }, 'SIDA DAHAB', [[0.1, 'pop'], [sinceW('s01', 'dahab.') - sinceW('s01', 'waagii'), 'pop']]);
   card(wt('s01', 'waayo?') - 0.1, 's01', (ctx, lt) => {
     const k = E.oBack(inv(0, 0.35, lt), 2.2);
@@ -95,8 +97,8 @@
   card(wt('s02', 'jirridda') - 0.1, 's02', (ctx, lt) => {
     const b0 = sinceW('s02', 'jirridda') - 0.1, tj = sinceW('s02', 'jaro,') - b0 - 0.2, td = sinceW('s02', 'dheecaan') - b0, te = sinceW('s02', 'engega.') - b0;
     // the trunk close up
-    rrect(ctx, CX - 170, 380, 340, 760, 60, BARK);
-    for (let i = 0; i < 7; i++) { ctx.save(); ctx.globalAlpha = 0.8; ctx.fillStyle = PAPER; ctx.beginPath(); ctx.ellipse(CX - 110 + (i % 3) * 100, 430 + i * 100, 40, 22, 0.4, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
+    rrect(ctx, CX - 170, 390, 340, 690, 60, BARK);
+    for (let i = 0; i < 7; i++) { ctx.save(); ctx.globalAlpha = 0.8; ctx.fillStyle = PAPER; ctx.beginPath(); ctx.ellipse(CX - 110 + (i % 3) * 100, 440 + i * 92, 40, 22, 0.4, 0, Math.PI * 2); ctx.fill(); ctx.restore(); }
     const c = E.io(inv(tj, tj + 0.4, lt));
     if (c > 0) G.seg(ctx, [CX - 90, 720], [CX - 90 + 170 * c, 735], 12, MILK);
     // a faceless hand with a small knife
@@ -134,9 +136,9 @@
   // ——— 4 · two famous kinds: Beeyo and Meydi, "the king", only in Somalia ———
   const piles = (ctx, lt, tB, tM, crown = 0) => {
     const kb = E.oBack(inv(tB, tB + 0.3, lt)), km = E.oBack(inv(tM, tM + 0.3, lt));
-    if (kb > 0) { tears(ctx, CX - 210, 880, 170 * kb, 18, AMB); pill(ctx, 'BEEYO', CX - 210, 1010, DBR, CREAM, kb, 32); }
-    if (km > 0) { tears(ctx, CX + 210, 880, 170 * km, 18, '#e8c977'); pill(ctx, 'MEYDI', CX + 210, 1010, DBR, CREAM, km, 32); }
-    if (crown > 0) { const y = lerp(380, 700, E.oBack(clamp(crown), 1.4)); ctx.save(); ctx.translate(CX + 210, y);
+    if (kb > 0) { tears(ctx, CX - 210, 820, 160 * kb, 18, AMB); pill(ctx, 'BEEYO', CX - 210, 1040, DBR, CREAM, kb, 32); }
+    if (km > 0) { tears(ctx, CX + 210, 820, 160 * km, 18, '#e8c977'); pill(ctx, 'MEYDI', CX + 210, 1040, DBR, CREAM, km, 32); }
+    if (crown > 0) { const y = lerp(360, 640, E.oBack(clamp(crown), 1.4)); ctx.save(); ctx.translate(CX + 210, y);
       poly(ctx, [[-80, 40], [-90, -40], [-45, 0], [0, -55], [45, 0], [90, -40], [80, 40]], AMB); for (const x of [-90, 0, 90]) disc(ctx, x, x ? -42 : -58, 13, PAL.amber.t[3]); ctx.restore(); }
   };
   card(S('s04').t, 's04', (ctx, lt) => piles(ctx, lt, sinceW('s04', 'beeyo') - 0.1, sinceW('s04', 'meydi.') - 0.1), 'BEEYO & MEYDI',
@@ -168,7 +170,7 @@
   card(wt('s05', 'oo') - 0.1, 's05', (ctx, lt) => {
     clipStage(ctx, () => { ctx.fillStyle = '#cfe3e6'; ctx.fillRect(0, 0, W, H); G.geo(ctx, window.AFR, afr, SANDC); G.geo(ctx, window.SOM, afr, AMB); });
     const h = afr([47, 8]); for (let i = 0; i < 3; i++) { const u = (lt * 0.8 + i / 3) % 1; G.ring(ctx, h[0], h[1], 30 + u * 120, 8 * (1 - u), rgba(TER, 1 - u)); }
-    pill(ctx, 'PUNT?', h[0] - 10, h[1] - 120, TER, CREAM, E.oBack(inv(0.1, 0.4, lt)), 40);
+    pill(ctx, 'PUNT?', h[0] - 230, h[1] - 230, TER, CREAM, E.oBack(inv(0.1, 0.4, lt)), 40);
     pill(ctx, 'GEESKA AFRIKA', CX, 1060, DBR, CREAM, E.oBack(inv(sinceW('s05', 'geeska') - (sinceW('s05', 'oo') - 0.1) - 0.1, sinceW('s05', 'geeska') - (sinceW('s05', 'oo') - 0.1) + 0.2, lt)), 28);
   }, 'PUNT?', [[0.1, 'pop'], [sinceW('s05', 'geeska') - sinceW('s05', 'oo'), 'click']]);
 
@@ -184,12 +186,12 @@
     [[200, 'UUNSI'], [540, 'CADAR'], [880, 'DAAWO']].forEach(([x, lab], i) => {
       const k = E.oBack(inv(T[i], T[i] + 0.3, lt)); if (k <= 0) return;
       disc(ctx, x, ys, 150 * k, '#ffffff');
-      ctx.save(); ctx.translate(x, ys); ctx.scale(k * 1.35, k * 1.35);
-      if (i === 0) burner(ctx, 0, 40, 150, lt);
+      ctx.save(); ctx.translate(x, ys); ctx.scale(k * 1.15, k * 1.15);
+      if (i === 0) burner(ctx, 0, 55, 110, lt);
       if (i === 1) { rrect(ctx, -55, -50, 110, 140, 30, rgba(AMB, 0.85)); rrect(ctx, -22, -90, 44, 44, 10, DBR); rrect(ctx, -12, -110, 24, 24, 8, mix(DBR, '#fff', 0.3)); }
       if (i === 2) { rrect(ctx, -60, -40, 120, 120, 24, OLV); rrect(ctx, -70, -70, 140, 40, 14, DBR); rrect(ctx, -10, -10, 20, 60, 4, CREAM); rrect(ctx, -30, 10, 60, 20, 4, CREAM); }
       ctx.restore();
-      ctx.save(); ctx.globalAlpha = clamp(k); ctx.fillStyle = INK; ctx.font = '800 32px Montserrat'; ctx.textAlign = 'center'; ctx.fillText(lab, x, ys - 185); ctx.restore();
+      ctx.save(); ctx.globalAlpha = clamp(k); ctx.fillStyle = INK; ctx.font = '800 32px Montserrat'; ctx.textAlign = 'center'; ctx.fillText(lab, x, ys + 200); ctx.restore();
     });
   }, 'UUNSI · CADAR · DAAWO', [[sinceW('s06', 'uunsiga,') - 0.15, 'pop'], [sinceW('s06', 'uunsiga,'), 'crackle', { dur: 1.6 }], [sinceW('s06', 'cadarka') - 0.15, 'pop'], [sinceW('s06', 'daawooyinka') - 0.15, 'pop']]);
   card(wt('s06', 'adduunka') - 0.1, 's06', (ctx, lt) => {
