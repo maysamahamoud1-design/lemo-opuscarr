@@ -48,14 +48,14 @@
     bigText(ctx, '1 DARAASAD', CX, 520, 58, E.oBack(inv(0.05, 0.35, lt)), NAVY);
     for (let i = 0; i < 12; i++) kid(ctx, 330 + (i % 6) * 84, 760 + Math.floor(i / 6) * 150, 110, KIDC[i % KIDC.length]);
   }, '12 CARRUUR', [[0, 'paper']]);
-  card(wt('s01', 'malaayiin') - 0.1, 's01', (ctx, lt) => {
+  card(S('s02').t, 's02', (ctx, lt) => {
     crowd(ctx, lt, 66, 105, GREY, 520, 11, true);
     ctx.save(); ctx.globalAlpha = 0.9; rrect(ctx, CX - 300, 700, 600, 150, 40, WHITE); ctx.restore();
     bigText(ctx, 'MALAAYIIN', CX, 778, 96, E.oBack(inv(0.3, 0.6, lt)), RED);
-  }, '12 CARRUUR', [[0.1, 'whoosh', { dur: 0.5 }], [0.35, 'pop']]);
+  }, 'MALAAYIIN WAALID', [[0.1, 'whoosh', { dur: 0.5 }], [0.35, 'pop']]);
 
   // ——— 2 · 1998: a British doctor claimed MMR causes autism ———
-  card(S('s02').t, 's02', (ctx, lt) => {
+  card(wt('s02', 'dhakhtar') - 0.1, 's02', (ctx, lt) => {
     const k = E.o3(inv(0, 0.4, lt)); paper(ctx, lerp(1400, CX, k), 760, 520, 640, -0.03 * k);
     bigText(ctx, '1998', lerp(1400, CX, k), 520, 110, 1, NAVY);
     adult(ctx, CX + 300, 1060, 260, '#ffffff');

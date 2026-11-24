@@ -1,13 +1,13 @@
 [
  {
   "id": "s01",
-  "text": "12 carruur ah. Hal daraasad. Malaayiin waalid ayay cabsi gelisay.",
-  "say": "Laba iyo toban carruur ah. Hal daraasad. Malaayiin waalid ayay cabsi gelisay."
+  "text": "12 carruur ah, hal daraasad.",
+  "say": "Laba iyo toban carruur ah, hal daraasad."
  },
  {
   "id": "s02",
-  "text": "Dhakhtar Ingiriis ah ayaa sheegay in tallaalka MMR uu keeno otisam.",
-  "say": "Dhakhtar Ingiriis ah ayaa sheegay in tallaalka Em-Em-Aar uu keeno otisam."
+  "text": "Malaayiin waalid ayay cabsi gelisay. Dhakhtar Ingiriis ah ayaa sheegay in tallaalka MMR uu keeno otisam.",
+  "say": "Malaayiin waalid ayay cabsi gelisay. Dhakhtar Ingiriis ah ayaa sheegay in tallaalka Em-Em-Aar uu keeno otisam."
  },
  {
   "id": "s03",

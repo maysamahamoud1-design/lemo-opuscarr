@@ -4,49 +4,49 @@ window.SC = [
 "id": "s01",
 "t": 0,
 "v": 0.1,
-"vd": 4.917,
-"text": "12 carruur ah. Hal daraasad. Malaayiin waalid ayay cabsi gelisay.",
-"end": 5.137
+"vd": 1.789,
+"text": "12 carruur ah, hal daraasad.",
+"end": 2.009
 },
 {
 "id": "s02",
-"t": 5.137,
-"v": 5.237,
-"vd": 3.265,
-"text": "Dhakhtar Ingiriis ah ayaa sheegay in tallaalka MMR uu keeno otisam.",
-"end": 8.622
+"t": 2.009,
+"v": 2.109,
+"vd": 5.614,
+"text": "Malaayiin waalid ayay cabsi gelisay. Dhakhtar Ingiriis ah ayaa sheegay in tallaalka MMR uu keeno otisam.",
+"end": 7.843
 },
 {
 "id": "s03",
-"t": 8.622,
-"v": 8.722,
+"t": 7.843,
+"v": 7.943,
 "vd": 4.929,
 "text": "Daraasaddiisa waxaa laga helay been. Waa la buriyay, shatigiisii dhakhtarnimona waa laga qaaday.",
-"end": 13.771
+"end": 12.992
 },
 {
 "id": "s04",
-"t": 13.771,
-"v": 13.871,
+"t": 12.992,
+"v": 13.092,
 "vd": 6.938,
 "text": "Denmark, daraasad aad u weyn oo carruur ah: kuwa la tallaalay iyo kuwa aan la tallaalin, khatarta otisamku waa isku mid. Xiriir ma jiro.",
-"end": 20.929
+"end": 20.15
 },
 {
 "id": "s05",
-"t": 20.929,
-"v": 21.029,
+"t": 20.15,
+"v": 20.25,
 "vd": 7.418,
 "text": "Laakiin cabsidu way faaftay. Minnesota, tallaalka carruurta Soomaalida aad buu hoos ugu dhacay. Kadib, jadeeco ayaa ku faaftay bulshada.",
-"end": 28.567
+"end": 27.788
 },
 {
 "id": "s06",
-"t": 28.567,
-"v": 28.667,
+"t": 27.788,
+"v": 27.888,
 "vd": 6.743,
 "text": "Otisamku waa xaqiiqo, carruurtuna taageero ayay mudan yihiin. Laakiin tallaalku sabab ma aha. Dhammaan waxay ka bilaabatay…",
-"end": 35.76
+"end": 34.981
 }
 ];
-window.DUR = 35.76;
+window.DUR = 34.981;
