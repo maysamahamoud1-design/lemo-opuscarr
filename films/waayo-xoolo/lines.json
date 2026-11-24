@@ -1,0 +1,29 @@
+[
+ {
+  "id": "s01",
+  "text": "Hal bilyan oo doollar… oo xoolo nool ah.",
+  "say": "Hal bilyan oo doollar, oo xoolo nool ah."
+ },
+ {
+  "id": "s02",
+  "text": "Taas ayay Soomaaliya sannadkii iibisaa. Waxaa ku nool malaayiin xoolo ah: geel, lo', ido iyo riyo."
+ },
+ {
+  "id": "s03",
+  "text": "Geela keliya waa ku dhawaad 7 milyan, oo ka mid ah kuwa ugu badan adduunka. Ku dhawaad lixdii geel ee adduunka, mid waa Soomaali.",
+  "say": "Geela keliya waa ku dhawaad toddoba milyan, oo ka mid ah kuwa ugu badan adduunka. Ku dhawaad lixdii geel ee adduunka, mid waa Soomaali."
+ },
+ {
+  "id": "s04",
+  "text": "Sannad walba malaayiin xoolo ah ayaa loo dhoofiyaa Khaliijka, gaar ahaan Sacuudiga. Xajka keliya wuxuu qaataa inta badan idaha iyo riyaha la dhoofiyo."
+ },
+ {
+  "id": "s05",
+  "text": "Dakhligu wuxuu ku dhawaad labanlaabmay saddex sano gudahood. Xooluhu waa inta badan dakhliga dhoofinta Soomaaliya."
+ },
+ {
+  "id": "s06",
+  "text": "Markii Soomaaliya xorriyadda qaadatay, waxaa loogu yeeray 'Maandeeq', geela caanaha leh. Waana sababta Soomaaliya ay sannadkii iibiso…",
+  "say": "Markii Soomaaliya xorriyadda qaadatay, waxaa loogu yeeray, Maandeeq, geela caanaha leh. Waana sababta Soomaaliya ay sannadkii iibiso"
+ }
+]
