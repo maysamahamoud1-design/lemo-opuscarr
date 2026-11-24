@@ -1,0 +1,54 @@
+[
+ {
+  "id": "s01",
+  "text": "Hal qof oo jiran… wuxuu u gudbin karaa 18 qof. Fayraskiisuna hawada ayuu ku sii jiraa laba saacadood. Waa jadeecada.",
+  "say": "Hal qof oo jiran. Wuxuu u gudbin karaa siddeed iyo toban qof. Fayraskiisuna hawada ayuu ku sii jiraa laba saacadood. Waa jadeecada."
+ },
+ {
+  "id": "s02",
+  "text": "Jadeecadu waa fayras ku faafa neefta, qufaca iyo hindhisada. Xitaa qolka uu qof jiran ka baxay, waad ka qaadi kartaa."
+ },
+ {
+  "id": "s03",
+  "text": "10 ilaa 12 maalmood kadib: qandho, duray, qufac iyo indho cas. Laba ilaa afar maalmood kadib, finan ayaa wejiga ka bilaabma oo jirka oo dhan ku faafa. Ogow: maqaarka madow, finanku si fudud uma muuqdaan.",
+  "say": "Toban ilaa laba iyo toban maalmood kadib: qandho, duray, qufac iyo indho cas. Laba ilaa afar maalmood kadib, finan ayaa wejiga ka bilaabma oo jirka oo dhan ku faafa. Ogow: maqaarka madow, finanku si fudud uma muuqdaan."
+ },
+ {
+  "id": "s04",
+  "text": "Qofku wuxuu faafin karaa afar maalmood ka hor intaanay finanku soo bixin, isagoon ogeyn inuu jiran yahay."
+ },
+ {
+  "id": "s05",
+  "text": "Jadeecadu waxay keeni kartaa oof-wareen, shuban, barar maskaxda iyo indho la'aan. Oo waxaa intaas ka sii daran: waxay tirtirtaa xusuusta habdhiska difaaca. Carruurta jadeecada qaaday waxay lumiyeen 11% ilaa 73% unugyadii difaaca.",
+  "say": "Jadeecadu waxay keeni kartaa oof-wareen, shuban, barar maskaxda iyo indho la'aan. Oo waxaa intaas ka sii daran: waxay tirtirtaa xusuusta habdhiska difaaca. Carruurta jadeecada qaaday waxay lumiyeen kow iyo toban ilaa saddex iyo toddobaatan boqolkiiba unugyadii difaaca."
+ },
+ {
+  "id": "s06",
+  "text": "Adduunka, hal sannad: 11 milyan oo xaaladood iyo 95,000 dhimasho.",
+  "say": "Adduunka, hal sannad: kow iyo toban milyan oo xaaladood iyo shan iyo sagaashan kun oo dhimasho."
+ },
+ {
+  "id": "s07",
+  "text": "Soomaaliya, jadeecada, oof-wareenka iyo shubanka ayaa wada sababa ku dhawaad 43% dhimashada carruurta. Kismaayo kaliya, qiyaastii 680 qof ayaa jadeeco u dhintay.",
+  "say": "Soomaaliya, jadeecada, oof-wareenka iyo shubanka ayaa wada sababa ku dhawaad saddex iyo afartan boqolkiiba dhimashada carruurta. Kismaayo kaliya, qiyaastii lix boqol iyo siddeetan qof ayaa jadeeco u dhintay."
+ },
+ {
+  "id": "s08",
+  "text": "Minnesota, Maraykanka: tallaalka carruurta Soomaalida wuxuu ka dhacay 92% ilaa 42%. UK-gana, ilmo ayaa jadeeco ugu dhintay Liverpool, dalkuna wuxuu lumiyay magaca 'dal jadeeco ka xor ah'.",
+  "say": "Minisoota, Maraykanka: tallaalka carruurta Soomaalida wuxuu ka dhacay laba iyo sagaashan boqolkiiba ilaa laba iyo afartan boqolkiiba. Yuu-Kee-gana, ilmo ayaa jadeeco ugu dhintay Liverbuul, dalkuna wuxuu lumiyay magaca, dal jadeeco ka xor ah."
+ },
+ {
+  "id": "s09",
+  "text": "Maxaa sababay? Warar been ah oo sheegayay in tallaalka MMR uu keeno otisam. Daraasaddaas waxay ku salaysnayd 12 carruur ah oo keliya. Waa la buriyay. Daraasad Denmark ah oo 657,000 carruur ah: wax xiriir ah ma jiro.",
+  "say": "Maxaa sababay? Warar been ah oo sheegayay in tallaalka Em-Em-Aar uu keeno otisam. Daraasaddaas waxay ku salaysnayd laba iyo toban carruur ah oo keliya. Waa la buriyay. Daraasad Denmaark ah oo lix boqol iyo konton iyo toddoba kun oo carruur ah: wax xiriir ah ma jiro."
+ },
+ {
+  "id": "s10",
+  "text": "Jadeecadu waxay soo bandhigtaa meel kasta oo tallaal ka maqan yahay. Laba qiyaasood oo MMR ah ayaa ilmahaaga ilaaliya, UK-gana waa bilaash.",
+  "say": "Jadeecadu waxay soo bandhigtaa meel kasta oo tallaal ka maqan yahay. Laba qiyaasood oo Em-Em-Aar ah ayaa ilmahaaga ilaaliya, Yuu-Kee-gana waa bilaash."
+ },
+ {
+  "id": "s11",
+  "text": "Talo caafimaad maaha, la tasho dhakhtarkaaga. U dir waalid kale."
+ }
+]
