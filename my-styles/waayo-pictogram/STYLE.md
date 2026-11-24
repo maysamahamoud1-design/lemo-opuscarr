@@ -14,6 +14,7 @@ Default size: 1080×1920.
 
 The channel owner named `films/waayo-shaah` their favourite. Match it unless they ask otherwise:
 
+- **Hook: 2 seconds maximum** (the owner's rule, from *Waayo? · MMR*). The first spoken line ends by 2.0 s: a short, punchy line ("12 carruur ah, hal daraasad."), with something already moving on frame 0. If the script's first line is longer, keep its words but move the rest into the start of scene 2.
 - **Voice pace**: Muuse at **+22 %**, **0.22 s** between lines. Don't slow him down to reach a length; tell the owner the length instead.
 - **Switching**: every scene cut into **2–4 cards** on its key words (a scene that is one drawing can still be two cards: the same drawing, the second card's clock offset), so the picture changes every 1.5–3 s.
 - **Swooshes**: a whoosh on **every** card change (0.45 s, under the voice) and on every chapter wipe.
